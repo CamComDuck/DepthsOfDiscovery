@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4cubchmmegrr"]
+
+[ext_resource type="Script" path="res://Submarine/submarine.gd" id="1_ypxf4"]
+[ext_resource type="Texture2D" uid="uid://pb1snut8jrot" path="res://Submarine/TEMP_submarine.png" id="2_k5ivo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_17lp6"]
+size = Vector2(150, 200)
+
+[node name="Submarine" type="CharacterBody2D"]
+floor_constant_speed = true
+script = ExtResource("1_ypxf4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_k5ivo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_17lp6")
