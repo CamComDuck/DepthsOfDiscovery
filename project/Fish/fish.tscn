@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cl12fbnd0tx7e"]
+
+[ext_resource type="Script" path="res://Fish/fish.gd" id="1_isc78"]
+[ext_resource type="Texture2D" uid="uid://d4b530cifxmvp" path="res://Fish/TEMP_fish_blue.png" id="2_sodov"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d6fyj"]
+radius = 57.85
+
+[node name="Fish" type="CharacterBody2D"]
+z_index = 5
+z_as_relative = false
+motion_mode = 1
+script = ExtResource("1_isc78")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture = ExtResource("2_sodov")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_d6fyj")
