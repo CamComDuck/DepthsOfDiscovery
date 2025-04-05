@@ -1,9 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://e2w67wdwneby"]
+[gd_scene load_steps=7 format=3 uid="uid://e2w67wdwneby"]
 
 [ext_resource type="Script" path="res://Shop/shop.gd" id="1_rncua"]
-[ext_resource type="PackedScene" uid="uid://c4cubchmmegrr" path="res://Submarine/Submarine.tscn" id="2_7w6cg"]
-[ext_resource type="PackedScene" uid="uid://uiu8krrnixr8" path="res://Ocean/fishPanel.tscn" id="3_3psn6"]
-[ext_resource type="PackedScene" uid="uid://bt7j7ci1tgb0b" path="res://Ocean/fishContainerRow.tscn" id="4_t6waj"]
 [ext_resource type="Texture2D" uid="uid://d4b530cifxmvp" path="res://Fish/TEMP_fish_blue.png" id="5_oh26v"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_76dbx"]
@@ -18,14 +15,7 @@ bg_color = Color(0.822064, 0.465632, 0.657747, 1)
 [node name="Shop" type="Node2D"]
 script = ExtResource("1_rncua")
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 10.0
-autostart = true
-
 [node name="ShopCamera" type="Camera2D" parent="."]
-
-[node name="Submarine" parent="." instance=ExtResource("2_7w6cg")]
-position = Vector2(-463, -226)
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 offset_left = -630.0
@@ -56,8 +46,9 @@ size_flags_vertical = 3
 theme_override_constants/separation = 30
 
 [node name="ReferenceRect" type="ReferenceRect" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(300, 300)
+unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 3
 border_width = 5.0
 
 [node name="CollectedFishContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/VBoxContainer"]
@@ -81,34 +72,22 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_86eq6")
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/VBoxContainer/CollectedFishContainer/MarginContainer/VBoxContainer/PanelContainer"]
+[node name="FishPanelParent" type="MarginContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/VBoxContainer/CollectedFishContainer/MarginContainer/VBoxContainer/PanelContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/margin_left = 7
-theme_override_constants/margin_top = 7
-theme_override_constants/margin_right = 7
-theme_override_constants/margin_bottom = 7
-
-[node name="FishPanel" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/VBoxContainer/CollectedFishContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer" instance=ExtResource("3_3psn6")]
-layout_mode = 2
-
-[node name="FishContainerRow" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/VBoxContainer/CollectedFishContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/FishPanel/MarginContainer/VBoxContainer" index="0" instance=ExtResource("4_t6waj")]
-layout_mode = 2
-
-[node name="FishContainerRow2" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/VBoxContainer/CollectedFishContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/FishPanel/MarginContainer/VBoxContainer" index="1" instance=ExtResource("4_t6waj")]
-layout_mode = 2
-
-[node name="FishContainerRow3" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/VBoxContainer/CollectedFishContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/FishPanel/MarginContainer/VBoxContainer" index="2" instance=ExtResource("4_t6waj")]
-layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
 [node name="PurchasingContainer" type="TabContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 tab_alignment = 1
-current_tab = 2
+current_tab = 0
 clip_tabs = false
 
 [node name="Power" type="PanelContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -154,13 +133,14 @@ size_flags_horizontal = 3
 text = "Battery"
 horizontal_alignment = 1
 
-[node name="LevelLabel" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/Battery/MarginContainer/Battery"]
+[node name="LevelLabel2" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/Battery/MarginContainer/Battery"]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 10
+size_flags_stretch_ratio = 0.5
 text = "LVL1"
-horizontal_alignment = 1
+horizontal_alignment = 2
 
-[node name="LevelBar" type="ProgressBar" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/Battery/MarginContainer/Battery"]
+[node name="LevelBar2" type="ProgressBar" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/Battery/MarginContainer/Battery"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -170,7 +150,7 @@ step = 1.0
 value = 1.0
 show_percentage = false
 
-[node name="Spacer4" type="Control" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/Battery/MarginContainer/Battery"]
+[node name="Spacer5" type="Control" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/Battery/MarginContainer/Battery"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -217,33 +197,34 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.3
 
-[node name="VSpeed2" type="PanelContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer"]
+[node name="VSpeed" type="PanelContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_smlha")
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/VSpeed2"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/VSpeed"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VSpeed" type="HBoxContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/VSpeed2/MarginContainer"]
+[node name="VSpeed" type="HBoxContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/VSpeed/MarginContainer"]
 layout_mode = 2
 
-[node name="Description" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/VSpeed2/MarginContainer/VSpeed"]
+[node name="Description" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/VSpeed/MarginContainer/VSpeed"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Vertical Speed"
 horizontal_alignment = 1
 
-[node name="LevelLabel" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/VSpeed2/MarginContainer/VSpeed"]
+[node name="LevelLabel2" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/VSpeed/MarginContainer/VSpeed"]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 10
+size_flags_stretch_ratio = 0.5
 text = "LVL1"
-horizontal_alignment = 1
+horizontal_alignment = 2
 
-[node name="LevelBar" type="ProgressBar" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/VSpeed2/MarginContainer/VSpeed"]
+[node name="LevelBar2" type="ProgressBar" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/VSpeed/MarginContainer/VSpeed"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -253,19 +234,19 @@ step = 1.0
 value = 1.0
 show_percentage = false
 
-[node name="Spacer4" type="Control" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/VSpeed2/MarginContainer/VSpeed"]
+[node name="Spacer5" type="Control" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/VSpeed/MarginContainer/VSpeed"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.3
 
-[node name="UpgradeButton" type="Button" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/VSpeed2/MarginContainer/VSpeed"]
+[node name="UpgradeButton" type="Button" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/VSpeed/MarginContainer/VSpeed"]
 custom_minimum_size = Vector2(125, 30)
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/VSpeed2/MarginContainer/VSpeed/UpgradeButton"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/VSpeed/MarginContainer/VSpeed/UpgradeButton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -277,20 +258,20 @@ theme_override_constants/margin_top = 3
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/VSpeed2/MarginContainer/VSpeed/UpgradeButton/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/VSpeed/MarginContainer/VSpeed/UpgradeButton/MarginContainer"]
 layout_mode = 2
 
-[node name="UpgradeName" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/VSpeed2/MarginContainer/VSpeed/UpgradeButton/MarginContainer/HBoxContainer"]
+[node name="UpgradeName" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/VSpeed/MarginContainer/VSpeed/UpgradeButton/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "UPGRADE"
 
-[node name="UpgradeSprite" type="TextureRect" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/VSpeed2/MarginContainer/VSpeed/UpgradeButton/MarginContainer/HBoxContainer"]
+[node name="UpgradeSprite" type="TextureRect" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/VSpeed/MarginContainer/VSpeed/UpgradeButton/MarginContainer/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("5_oh26v")
 expand_mode = 3
 
-[node name="UpgradeCost" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/VSpeed2/MarginContainer/VSpeed/UpgradeButton/MarginContainer/HBoxContainer"]
+[node name="UpgradeCost" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/VSpeed/MarginContainer/VSpeed/UpgradeButton/MarginContainer/HBoxContainer"]
 layout_mode = 2
 text = "1"
 
@@ -320,13 +301,14 @@ size_flags_horizontal = 3
 text = "Horizontal Speed"
 horizontal_alignment = 1
 
-[node name="LevelLabel" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/HSpeed/MarginContainer/HSpeed"]
+[node name="LevelLabel2" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/HSpeed/MarginContainer/HSpeed"]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 10
+size_flags_stretch_ratio = 0.5
 text = "LVL1"
-horizontal_alignment = 1
+horizontal_alignment = 2
 
-[node name="LevelBar" type="ProgressBar" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/HSpeed/MarginContainer/HSpeed"]
+[node name="LevelBar2" type="ProgressBar" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/HSpeed/MarginContainer/HSpeed"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -336,7 +318,7 @@ step = 1.0
 value = 1.0
 show_percentage = false
 
-[node name="Spacer4" type="Control" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/HSpeed/MarginContainer/HSpeed"]
+[node name="Spacer5" type="Control" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/HSpeed/MarginContainer/HSpeed"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -430,13 +412,14 @@ size_flags_horizontal = 3
 text = "Max Health"
 horizontal_alignment = 1
 
-[node name="LevelLabel" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/MaxHealth/MarginContainer/MaxHealth"]
+[node name="LevelLabel2" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/MaxHealth/MarginContainer/MaxHealth"]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 10
+size_flags_stretch_ratio = 0.5
 text = "LVL1"
-horizontal_alignment = 1
+horizontal_alignment = 2
 
-[node name="LevelBar" type="ProgressBar" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/MaxHealth/MarginContainer/MaxHealth"]
+[node name="LevelBar2" type="ProgressBar" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/MaxHealth/MarginContainer/MaxHealth"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -446,7 +429,7 @@ step = 1.0
 value = 1.0
 show_percentage = false
 
-[node name="Spacer4" type="Control" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/MaxHealth/MarginContainer/MaxHealth"]
+[node name="Spacer5" type="Control" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/MaxHealth/MarginContainer/MaxHealth"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -513,13 +496,14 @@ size_flags_horizontal = 3
 text = "Health Regen"
 horizontal_alignment = 1
 
-[node name="LevelLabel" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/HealthRegen/MarginContainer/HealthRegen"]
+[node name="LevelLabel2" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/HealthRegen/MarginContainer/HealthRegen"]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 10
+size_flags_stretch_ratio = 0.5
 text = "LVL1"
-horizontal_alignment = 1
+horizontal_alignment = 2
 
-[node name="LevelBar" type="ProgressBar" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/HealthRegen/MarginContainer/HealthRegen"]
+[node name="LevelBar2" type="ProgressBar" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/HealthRegen/MarginContainer/HealthRegen"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -529,7 +513,7 @@ step = 1.0
 value = 1.0
 show_percentage = false
 
-[node name="Spacer4" type="Control" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/HealthRegen/MarginContainer/HealthRegen"]
+[node name="Spacer5" type="Control" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/HealthRegen/MarginContainer/HealthRegen"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -583,6 +567,7 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 0.3
 
 [node name="Vision" type="PanelContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
@@ -630,9 +615,10 @@ horizontal_alignment = 1
 
 [node name="LevelLabel" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/MaxVision/MarginContainer/MaxVision"]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 10
+size_flags_stretch_ratio = 0.5
 text = "LVL1"
-horizontal_alignment = 1
+horizontal_alignment = 2
 
 [node name="LevelBar" type="ProgressBar" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/MaxVision/MarginContainer/MaxVision"]
 layout_mode = 2
@@ -711,13 +697,14 @@ size_flags_horizontal = 3
 text = "Glowing Fish"
 horizontal_alignment = 1
 
-[node name="LevelLabel" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/FishVision/MarginContainer/FishVision"]
+[node name="LevelLabel2" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/FishVision/MarginContainer/FishVision"]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 10
+size_flags_stretch_ratio = 0.5
 text = "LVL1"
-horizontal_alignment = 1
+horizontal_alignment = 2
 
-[node name="LevelBar" type="ProgressBar" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/FishVision/MarginContainer/FishVision"]
+[node name="LevelBar2" type="ProgressBar" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/FishVision/MarginContainer/FishVision"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -727,7 +714,7 @@ step = 1.0
 value = 1.0
 show_percentage = false
 
-[node name="Spacer4" type="Control" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/FishVision/MarginContainer/FishVision"]
+[node name="Spacer5" type="Control" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/FishVision/MarginContainer/FishVision"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -794,13 +781,14 @@ size_flags_horizontal = 3
 text = "Glowing Dangers"
 horizontal_alignment = 1
 
-[node name="LevelLabel" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/DangerVision/MarginContainer/DangerVision"]
+[node name="LevelLabel2" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/DangerVision/MarginContainer/DangerVision"]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 10
+size_flags_stretch_ratio = 0.5
 text = "LVL1"
-horizontal_alignment = 1
+horizontal_alignment = 2
 
-[node name="LevelBar" type="ProgressBar" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/DangerVision/MarginContainer/DangerVision"]
+[node name="LevelBar2" type="ProgressBar" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/DangerVision/MarginContainer/DangerVision"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -810,7 +798,7 @@ step = 1.0
 value = 1.0
 show_percentage = false
 
-[node name="Spacer4" type="Control" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/DangerVision/MarginContainer/DangerVision"]
+[node name="Spacer5" type="Control" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/DangerVision/MarginContainer/DangerVision"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -877,6 +865,12 @@ text = "Submarine Name -- 10 Dives"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="DiveButton" type="Button" parent="."]
+offset_left = 425.0
+offset_top = -316.0
+offset_right = 579.0
+offset_bottom = -259.0
+theme_override_font_sizes/font_size = 50
+text = "Dive!"
 
-[editable path="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/VBoxContainer/CollectedFishContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/FishPanel"]
+[connection signal="pressed" from="DiveButton" to="." method="_on_dive_button_pressed"]

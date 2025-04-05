@@ -49,6 +49,7 @@ func _ready() -> void:
 			
 	healthPowerBars.setPower(powerLevel)
 	healthPowerBars.setHealth(healthLevel)
+	Currency.totalDives += 1
 	
 
 func _physics_process(_delta: float) -> void:
@@ -99,7 +100,7 @@ func onFishCollected(fishType : FishType) -> void:
 	if Currency.fishCollectedCount[fishType.name] == 0:
 		fishPanel.addFishRow(fishType)
 		
-	Currency.fishCollectedCount[fishType.name] = Currency.fishCollectedCount[fishType.name] + 1
+	Currency.fishCollectedCount[fishType.name] += 1
 	fishPanel.updateFishCounts()
 
 

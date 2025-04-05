@@ -32,6 +32,7 @@ ProgressBar/font_sizes/font_size = 24
 ProgressBar/fonts/font = ExtResource("1_8g3rc")
 ProgressBar/styles/background = SubResource("StyleBoxFlat_yr6ac")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_t5b22")
+TabBar/constants/h_separation = 8
 TabContainer/constants/outline_size = 2
 TabContainer/font_sizes/font_size = 56
 TabContainer/fonts/font = ExtResource("1_8g3rc")

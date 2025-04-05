@@ -1,4 +1,5 @@
 extends Node
 
-var submarineName := "Submarine Name"
+var submarineName := "My Submarine Name"
 var fishCollectedCount := {} 
+var totalDives := 0

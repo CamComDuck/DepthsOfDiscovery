@@ -16,7 +16,6 @@ autostart = true
 
 [node name="PowerDrainTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 0.2
 autostart = true
 
 [connection signal="timeout" from="FishSpawnTimer" to="." method="_on_fish_spawn_timer_timeout"]

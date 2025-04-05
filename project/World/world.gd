@@ -22,6 +22,9 @@ func onSceneChanged(newScenePath : String) -> void:
 		fade_out.tween_property(child, "modulate", Color(0, 0, 0), 0.2)
 	await fade_out.finished
 	
+	if currentScene is Shop:
+		currentScene.fixFishPanel()
+	
 	currentScene.queue_free()
 
 	currentScene = load(newScenePath).instantiate() as Map
@@ -42,7 +45,7 @@ func onSceneChanged(newScenePath : String) -> void:
 		subCamera.enabled = true
 		
 	elif currentScene is Shop:
-		submarine.global_position = Vector2(-463,-226)
+		submarine.global_position = currentScene.getReferenceCenter()
 		background.hide()
 		submarine.allowMovement = false
 		submarine.toggleShipScanner(false)
