@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://bt7j7ci1tgb0b"]
+
+[ext_resource type="Texture2D" uid="uid://d4b530cifxmvp" path="res://Fish/TEMP_fish_blue.png" id="1_d8v70"]
+[ext_resource type="Script" path="res://Ocean/fishContainerRow.gd" id="1_pi4rx"]
+
+[node name="FishContainerRow" type="HBoxContainer"]
+script = ExtResource("1_pi4rx")
+
+[node name="FishSprite" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("1_d8v70")
+expand_mode = 3
+
+[node name="FishName" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Blue Fish"
+
+[node name="Spacer" type="Control" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FishCount" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "10"
+horizontal_alignment = 1

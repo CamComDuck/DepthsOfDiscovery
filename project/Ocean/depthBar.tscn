@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://5mu2n3sbh36c"]
 
-[ext_resource type="Script" path="res://Ocean/depth_bar.gd" id="1_whe08"]
+[ext_resource type="Script" path="res://Ocean/depthBar.gd" id="1_whe08"]
 
 [node name="DepthBar" type="ProgressBar"]
 offset_left = -620.58

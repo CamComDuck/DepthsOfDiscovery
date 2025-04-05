@@ -4,6 +4,7 @@ extends CharacterBody2D
 
 signal onPowerHit (minusPower : float)
 signal onHealthHit (minusHealth : float)
+signal onFishCollected (fishType : FishType)
 
 const MOVE_SPEED = 150.0
 const SCAN_SPEED = 50.0
@@ -55,8 +56,7 @@ func handle_scanner_collisions() -> void:
 			var scannedFish := scannerCast.get_collider(i) as Fish
 			scannedFish.queue_free()
 			onPowerHit.emit(powerHit)
-			Currency.fishCollectedCount[scannedFish.fishType.name] = Currency.fishCollectedCount[scannedFish.fishType.name] + 1
-			print(Currency.fishCollectedCount)
+			onFishCollected.emit(scannedFish.fishType)
 
 
 func handle_ship_collisions() -> void:

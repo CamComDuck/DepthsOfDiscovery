@@ -3,11 +3,13 @@ extends Map
 
 @export var fishTypes : Array[FishType]
 
-const maxDepthY := -1000.0
+const maxDepthY := -10000.0
 
 var submarine : Submarine
 var healthPowerBars : HealthPowerBars
 var depthBar : DepthBar
+var fishPanel : FishPanel
+
 var powerLevel := 100.0
 var healthLevel := 100.0
 var missionEnded := false
@@ -17,17 +19,26 @@ var currentDepth := 100.0
 @onready var healthPowerBarsScene := load("res://Ocean/healthPowerBars.tscn") as PackedScene
 @onready var depthBarScene := load("res://Ocean/depthBar.tscn") as PackedScene
 
-
 func _ready() -> void:
 	for i in get_parent().get_child_count():
 		if get_parent().get_child(i) is Submarine:
 			submarine = get_parent().get_child(i) as Submarine
-			healthPowerBars = healthPowerBarsScene.instantiate() as HealthPowerBars
-			submarine.add_child(healthPowerBars)
-			depthBar = depthBarScene.instantiate() as DepthBar
-			submarine.add_child(depthBar)
 			submarine.connect("onPowerHit", onPowerHit)
 			submarine.connect("onHealthHit", onHealthHit)
+			submarine.connect("onFishCollected", onFishCollected)
+			
+			healthPowerBars = healthPowerBarsScene.instantiate() as HealthPowerBars
+			submarine.add_child(healthPowerBars)
+			
+			depthBar = depthBarScene.instantiate() as DepthBar
+			submarine.add_child(depthBar)
+			
+			for j in submarine.get_child_count():
+				if submarine.get_child(j) is FishPanel:
+					fishPanel = submarine.get_child(j) as FishPanel
+					if fishPanel.isPanelEmpty():
+						fishPanel.hide()
+			
 	
 	if Currency.fishCollectedCount.is_empty():
 		for i in fishTypes:
@@ -45,7 +56,6 @@ func _physics_process(_delta: float) -> void:
 		if depthPercent <= 0: # Win
 			submarine.allowMovement = false
 			checkMissionEnded(true)
-		
 
 
 func checkMissionEnded(isWin : bool) -> void:
@@ -75,6 +85,17 @@ func onHealthHit(minusHealth : float) -> void:
 	healthLevel -= minusHealth
 	healthPowerBars.setHealth(healthLevel)
 	checkMissionEnded(false)
+	
+
+func onFishCollected(fishType : FishType) -> void:
+	if not fishPanel.visible:
+		fishPanel.show()
+	
+	if Currency.fishCollectedCount[fishType.name] == 0:
+		fishPanel.addFishRow(fishType)
+		
+	Currency.fishCollectedCount[fishType.name] = Currency.fishCollectedCount[fishType.name] + 1
+	fishPanel.updateFishCounts()
 
 
 func _on_fish_spawn_timer_timeout() -> void:

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://crspguap2g2d5"]
+[gd_scene load_steps=4 format=3 uid="uid://crspguap2g2d5"]
 
 [ext_resource type="Script" path="res://World/world.gd" id="1_hqvjj"]
 [ext_resource type="PackedScene" uid="uid://c4cubchmmegrr" path="res://Submarine/Submarine.tscn" id="2_63a7y"]
+[ext_resource type="PackedScene" uid="uid://uiu8krrnixr8" path="res://Ocean/fishPanel.tscn" id="3_vgon3"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_hqvjj")
@@ -28,3 +29,5 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
+
+[node name="FishPanel" parent="Submarine" instance=ExtResource("3_vgon3")]

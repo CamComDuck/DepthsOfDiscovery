@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://brttdrokf78u5"]
 
-[ext_resource type="Script" path="res://Ocean/health_power_bars.gd" id="1_k6xi8"]
+[ext_resource type="Script" path="res://Ocean/healthPowerBars.gd" id="1_k6xi8"]
 [ext_resource type="Theme" uid="uid://cn1usk00ydjpb" path="res://primary_theme.tres" id="1_midej"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6nj6u"]
@@ -26,11 +26,6 @@ theme = ExtResource("1_midej")
 theme_override_styles/fill = SubResource("StyleBoxFlat_6nj6u")
 value = 86.13
 fill_mode = 3
-
-[node name="Spacer" type="Control" parent="."]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.25
 
 [node name="PowerBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
