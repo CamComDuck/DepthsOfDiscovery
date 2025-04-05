@@ -38,6 +38,10 @@ folder_colors={
 "res://World/": "purple"
 }
 
+[gui]
+
+theme/custom="res://primary_theme.tres"
+
 [input]
 
 ui_accept={

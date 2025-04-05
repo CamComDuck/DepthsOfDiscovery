@@ -12,6 +12,7 @@ func _ready() -> void:
 	currentScene = load(currentScenePath).instantiate() as Map
 	currentScene.connect("onSceneChanged", onSceneChanged)
 	add_child(currentScene)
+	submarine.allowMovement = true
 	
 
 func onSceneChanged(newScenePath : String) -> void:
@@ -30,15 +31,16 @@ func onSceneChanged(newScenePath : String) -> void:
 	var fade_in : Tween = create_tween().set_parallel()
 	for child in get_children():
 		if not child.is_queued_for_deletion():
-			print(child.name)
 			fade_in.tween_property(child, "modulate", Color(1, 1, 1), 0.2)
 	
 	if currentScene is Ocean:
 		submarine.global_position = Vector2(0,0)
 		background.show()
+		submarine.allowMovement = true
 	elif currentScene is Shop:
 		submarine.global_position = Vector2(0,0)
 		background.hide()
+		submarine.allowMovement = false
 	
 	await fade_in.finished
 	currentScenePath = newScenePath

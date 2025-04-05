@@ -1,0 +1,15 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://cn1usk00ydjpb"]
+
+[ext_resource type="FontFile" uid="uid://bv75ergonc71w" path="res://VT323-Regular.ttf" id="1_8g3rc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yr6ac"]
+bg_color = Color(0.314316, 0.314316, 0.314316, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t5b22"]
+
+[resource]
+ProgressBar/constants/outline_size = 3
+ProgressBar/font_sizes/font_size = 24
+ProgressBar/fonts/font = ExtResource("1_8g3rc")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_yr6ac")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_t5b22")

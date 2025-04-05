@@ -5,13 +5,17 @@ extends CharacterBody2D
 const MOVE_SPEED = 150.0
 const SCAN_SPEED = 50.0
 
+var allowMovement := false
+var powerDrain := 10.0
+
 @onready var scannerCast := %ScannerCast as ShapeCast2D
 @onready var scannerSprite := %SpriteScanner as Sprite2D
 
 
 func _physics_process(delta: float) -> void:
-	handle_movement(delta)
-	handle_collisions()
+	if allowMovement:
+		handle_movement(delta)
+		handle_collisions()
 	
 
 func handle_movement(delta: float) -> void:
