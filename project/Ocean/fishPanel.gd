@@ -11,7 +11,7 @@ func addFishRow(fishInfo : FishType) -> void:
 	vBox.add_child(fishRow)
 	fishRow.setFishInfo(fishInfo)
 	fishRows.append(fishRow)
-	global_position.y -= 20
+	global_position.y -= fishRow.size.y
 
 
 func updateFishCounts() -> void:

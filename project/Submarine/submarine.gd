@@ -22,33 +22,31 @@ var healthHit := 15.0
 
 
 func _physics_process(delta: float) -> void:
+	handle_movement(delta)
 	if allowMovement:
-		handle_movement(delta)
 		handle_scanner_collisions()
 		handle_ship_collisions()
 	
 
 func handle_movement(delta: float) -> void:
-	if not is_on_floor():
+	if not is_on_floor() and allowMovement:
 		velocity += get_gravity() * delta
 		velocity.y = minf(velocity.y, 100)
 
 
 	var direction := Input.get_axis("move_left", "move_right")
-	if direction != 0:
-		velocity.x = direction * MOVE_SPEED
+	if allowMovement:
+		if direction != 0:
+			velocity.x = direction * MOVE_SPEED
+		else:
+			velocity.x = move_toward(velocity.x, 0, (MOVE_SPEED * delta) / 2 )
+		scannerCast.target_position.x = move_toward(scannerCast.target_position.x, direction * 150, SCAN_SPEED * delta * 1.5)
+		scannerSprite.rotation_degrees = move_toward(scannerSprite.rotation_degrees, -1 * direction * 50, (SCAN_SPEED * delta) / 2)
+		move_and_slide()
 	else:
-		velocity.x = move_toward(velocity.x, 0, (MOVE_SPEED * delta) / 2 ) 
+		scannerCast.target_position.x = 0
+		scannerSprite.rotation_degrees = 0
 		
-	scannerCast.target_position.x = move_toward(scannerCast.target_position.x, direction * 150, SCAN_SPEED * delta * 1.5)
-	scannerSprite.rotation_degrees = move_toward(scannerSprite.rotation_degrees, -1 * direction * 50, (SCAN_SPEED * delta) / 2)
-
-	#print("scannerCast.target_position.x: " + str(scannerCast.target_position.x))
-	#print("scannerSprite.rotation_degrees: " + str(scannerSprite.rotation_degrees))
-
-
-	move_and_slide()
-
 
 func handle_scanner_collisions() -> void:
 	for i in scannerCast.get_collision_count():
@@ -64,3 +62,7 @@ func handle_ship_collisions() -> void:
 		if shipCast.get_collider(i) is Fish:
 			onHealthHit.emit(healthHit)
 			shipCast.get_collider(i).queue_free()
+
+
+func toggleShipScanner(isVisible : bool) -> void:
+	scannerSprite.visible = isVisible
