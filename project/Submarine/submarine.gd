@@ -2,14 +2,21 @@
 class_name Submarine
 extends CharacterBody2D
 
-const MOVE_SPEED = 300.0
-const SCAN_SPEED = 100.0
+signal onFishScanned (fishScanned : FishType)
+
+const MOVE_SPEED = 150.0
+const SCAN_SPEED = 50.0
 
 @onready var scannerCast := %ScannerCast as ShapeCast2D
 @onready var scannerSprite := %SpriteScanner as Sprite2D
 
 
 func _physics_process(delta: float) -> void:
+	handle_movement(delta)
+	handle_collisions()
+	
+
+func handle_movement(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 		velocity.y = minf(velocity.y, 100)
@@ -19,12 +26,21 @@ func _physics_process(delta: float) -> void:
 	if direction != 0:
 		velocity.x = direction * MOVE_SPEED
 	else:
-		velocity.x = move_toward(velocity.x, 0, MOVE_SPEED)
+		velocity.x = move_toward(velocity.x, 0, (MOVE_SPEED * delta) / 2 ) 
 		
-	scannerCast.target_position.x = move_toward(scannerCast.target_position.x, direction * 100, SCAN_SPEED * delta)
+	scannerCast.target_position.x = move_toward(scannerCast.target_position.x, direction * 150, SCAN_SPEED * delta * 1.5)
 	scannerSprite.rotation_degrees = move_toward(scannerSprite.rotation_degrees, -1 * direction * 50, (SCAN_SPEED * delta) / 2)
 
-	print("target position: " + str(scannerCast.target_position.x))
-	print("rotation degrees: " + str(scannerSprite.rotation_degrees))
+	#print("scannerCast.target_position.x: " + str(scannerCast.target_position.x))
+	#print("scannerSprite.rotation_degrees: " + str(scannerSprite.rotation_degrees))
+
 
 	move_and_slide()
+
+
+func handle_collisions() -> void:
+	for i in scannerCast.get_collision_count():
+		if scannerCast.get_collider(i) is Fish and Input.is_action_just_pressed("collect"):
+			var scannedFish := scannerCast.get_collider(i) as Fish
+			onFishScanned.emit(scannedFish.fishType)
+			scannedFish.queue_free()

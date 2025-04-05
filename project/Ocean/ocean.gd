@@ -1,19 +1,18 @@
 class_name Ocean
 extends Node2D
 
+var fishCollectedCount := {} 
+
 @export var fishTypes : Array[FishType]
 
 @onready var fish := load("res://Fish/fish.tscn") as PackedScene
 @onready var submarine := %Submarine as Submarine
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
+	for i in fishTypes:
+		var temp := {i.name: 0}
+		fishCollectedCount.merge(temp)
 
 
 func _on_timer_timeout() -> void:
@@ -24,4 +23,8 @@ func _on_timer_timeout() -> void:
 	var randX := randf_range(submarine.global_position.x - 500, submarine.global_position.x + 500)
 	var randY := randf_range(submarine.global_position.y + 250, submarine.global_position.y + 750)
 	newFish.global_position = Vector2(randX, randY)
-	
+
+
+func _on_submarine_on_fish_scanned(fishScanned: FishType) -> void:
+	fishCollectedCount[fishScanned.name] = fishCollectedCount[fishScanned.name] + 1
+	print(fishCollectedCount)

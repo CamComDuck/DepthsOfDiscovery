@@ -35,4 +35,5 @@ color = Color(0, 0, 0, 1)
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
+[connection signal="onFishScanned" from="Submarine" to="." method="_on_submarine_on_fish_scanned"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
