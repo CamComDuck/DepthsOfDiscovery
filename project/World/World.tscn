@@ -10,7 +10,8 @@ script = ExtResource("1_hqvjj")
 [node name="Submarine" parent="." instance=ExtResource("2_63a7y")]
 unique_name_in_owner = true
 
-[node name="Camera2D" type="Camera2D" parent="Submarine"]
+[node name="SubCamera" type="Camera2D" parent="Submarine"]
+unique_name_in_owner = true
 
 [node name="Background" type="ColorRect" parent="Submarine"]
 unique_name_in_owner = true

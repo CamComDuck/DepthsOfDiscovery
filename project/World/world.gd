@@ -6,6 +6,7 @@ var currentScene : Map
 
 @onready var submarine := %Submarine as Submarine
 @onready var background := %Background as ColorRect
+@onready var subCamera := %SubCamera as Camera2D
 
 func _ready() -> void:
 	currentScenePath = "res://Ocean/Ocean.tscn"
@@ -38,11 +39,15 @@ func onSceneChanged(newScenePath : String) -> void:
 		background.show()
 		submarine.allowMovement = true
 		submarine.toggleShipScanner(true)
+		subCamera.enabled = true
+		
 	elif currentScene is Shop:
-		submarine.global_position = Vector2(0,0)
+		submarine.global_position = Vector2(-463,-226)
 		background.hide()
 		submarine.allowMovement = false
 		submarine.toggleShipScanner(false)
+		subCamera.enabled = false
+		
 	elif currentScene is WinGame:
 		submarine.global_position = Vector2(0,0)
 		background.hide()

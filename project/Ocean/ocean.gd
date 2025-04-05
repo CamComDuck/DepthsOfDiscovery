@@ -18,6 +18,8 @@ var currentDepth := 100.0
 @onready var fish := load("res://Fish/fish.tscn") as PackedScene
 @onready var healthPowerBarsScene := load("res://Ocean/healthPowerBars.tscn") as PackedScene
 @onready var depthBarScene := load("res://Ocean/depthBar.tscn") as PackedScene
+@onready var fish_spawn_timer: Timer = %FishSpawnTimer
+@onready var power_drain_timer: Timer = %PowerDrainTimer
 
 func _ready() -> void:
 	for i in get_parent().get_child_count():
@@ -55,10 +57,10 @@ func _physics_process(_delta: float) -> void:
 		depthBar.setDepth(depthPercent)
 		if depthPercent <= 0: # Win
 			submarine.allowMovement = false
-			checkMissionEnded(true)
+			checkDiveEnded(true)
 
 
-func checkMissionEnded(isWin : bool) -> void:
+func checkDiveEnded(isWin : bool) -> void:
 	if powerLevel > 0 and healthLevel > 0 and not isWin:
 		return
 	
@@ -69,6 +71,9 @@ func checkMissionEnded(isWin : bool) -> void:
 	missionEnded = true
 	healthPowerBars.queue_free()
 	depthBar.queue_free()
+	fish_spawn_timer.stop()
+	power_drain_timer.stop()
+	
 	if not isWin:
 		onSceneChanged.emit("res://Shop/Shop.tscn")
 	else:
@@ -78,13 +83,13 @@ func checkMissionEnded(isWin : bool) -> void:
 func onPowerHit(minusPower : float) -> void:
 	powerLevel -= minusPower
 	healthPowerBars.setPower(powerLevel)
-	checkMissionEnded(false)
+	checkDiveEnded(false)
 
 
 func onHealthHit(minusHealth : float) -> void:
 	healthLevel -= minusHealth
 	healthPowerBars.setHealth(healthLevel)
-	checkMissionEnded(false)
+	checkDiveEnded(false)
 	
 
 func onFishCollected(fishType : FishType) -> void:
@@ -119,4 +124,4 @@ func _on_fish_spawn_timer_timeout() -> void:
 func _on_power_drain_timer_timeout() -> void:
 	powerLevel -= submarine.powerDrain
 	healthPowerBars.setPower(powerLevel)
-	checkMissionEnded(false)
+	checkDiveEnded(false)

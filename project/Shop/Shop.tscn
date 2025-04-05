@@ -1,16 +1,882 @@
-[gd_scene load_steps=3 format=3 uid="uid://e2w67wdwneby"]
+[gd_scene load_steps=10 format=3 uid="uid://e2w67wdwneby"]
 
-[ext_resource type="Texture2D" uid="uid://blqbto7tvh6ev" path="res://icon.svg" id="1_ndgnf"]
 [ext_resource type="Script" path="res://Shop/shop.gd" id="1_rncua"]
+[ext_resource type="PackedScene" uid="uid://c4cubchmmegrr" path="res://Submarine/Submarine.tscn" id="2_7w6cg"]
+[ext_resource type="PackedScene" uid="uid://uiu8krrnixr8" path="res://Ocean/fishPanel.tscn" id="3_3psn6"]
+[ext_resource type="PackedScene" uid="uid://bt7j7ci1tgb0b" path="res://Ocean/fishContainerRow.tscn" id="4_t6waj"]
+[ext_resource type="Texture2D" uid="uid://d4b530cifxmvp" path="res://Fish/TEMP_fish_blue.png" id="5_oh26v"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_76dbx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_86eq6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_smlha"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rkfnf"]
+bg_color = Color(0.822064, 0.465632, 0.657747, 1)
 
 [node name="Shop" type="Node2D"]
-modulate = Color(1, 1, 1, 0)
 script = ExtResource("1_rncua")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_ndgnf")
-
 [node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
 autostart = true
 
+[node name="ShopCamera" type="Camera2D" parent="."]
+
+[node name="Submarine" parent="." instance=ExtResource("2_7w6cg")]
+position = Vector2(-463, -226)
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+offset_left = -630.0
+offset_top = -350.0
+offset_right = 630.0
+offset_bottom = 350.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_76dbx")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="HFlowContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/HFlowContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 30
+
+[node name="ReferenceRect" type="ReferenceRect" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+border_width = 5.0
+
+[node name="CollectedFishContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/VBoxContainer/CollectedFishContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/VBoxContainer/CollectedFishContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/VBoxContainer/CollectedFishContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Collected Fish"
+horizontal_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/VBoxContainer/CollectedFishContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_86eq6")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/VBoxContainer/CollectedFishContainer/MarginContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 7
+theme_override_constants/margin_bottom = 7
+
+[node name="FishPanel" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/VBoxContainer/CollectedFishContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer" instance=ExtResource("3_3psn6")]
+layout_mode = 2
+
+[node name="FishContainerRow" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/VBoxContainer/CollectedFishContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/FishPanel/MarginContainer/VBoxContainer" index="0" instance=ExtResource("4_t6waj")]
+layout_mode = 2
+
+[node name="FishContainerRow2" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/VBoxContainer/CollectedFishContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/FishPanel/MarginContainer/VBoxContainer" index="1" instance=ExtResource("4_t6waj")]
+layout_mode = 2
+
+[node name="FishContainerRow3" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/VBoxContainer/CollectedFishContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/FishPanel/MarginContainer/VBoxContainer" index="2" instance=ExtResource("4_t6waj")]
+layout_mode = 2
+
+[node name="PurchasingContainer" type="TabContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+tab_alignment = 1
+current_tab = 2
+clip_tabs = false
+
+[node name="Power" type="PanelContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power"]
+layout_mode = 2
+
+[node name="PowerContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer"]
+layout_mode = 2
+
+[node name="Description" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 45
+text = "Increase your power to go further into the ocean"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Spacer" type="Control" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="Battery" type="PanelContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_smlha")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/Battery"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Battery" type="HBoxContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/Battery/MarginContainer"]
+layout_mode = 2
+
+[node name="Description" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/Battery/MarginContainer/Battery"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Battery"
+horizontal_alignment = 1
+
+[node name="LevelLabel" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/Battery/MarginContainer/Battery"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "LVL1"
+horizontal_alignment = 1
+
+[node name="LevelBar" type="ProgressBar" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/Battery/MarginContainer/Battery"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/fill = SubResource("StyleBoxFlat_rkfnf")
+max_value = 5.0
+step = 1.0
+value = 1.0
+show_percentage = false
+
+[node name="Spacer4" type="Control" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/Battery/MarginContainer/Battery"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="UpgradeButton" type="Button" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/Battery/MarginContainer/Battery"]
+custom_minimum_size = Vector2(125, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/Battery/MarginContainer/Battery/UpgradeButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/Battery/MarginContainer/Battery/UpgradeButton/MarginContainer"]
+layout_mode = 2
+
+[node name="UpgradeName" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/Battery/MarginContainer/Battery/UpgradeButton/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "UPGRADE"
+
+[node name="UpgradeSprite" type="TextureRect" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/Battery/MarginContainer/Battery/UpgradeButton/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_oh26v")
+expand_mode = 3
+
+[node name="UpgradeCost" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/Battery/MarginContainer/Battery/UpgradeButton/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "1"
+
+[node name="Spacer4" type="Control" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="VSpeed2" type="PanelContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_smlha")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/VSpeed2"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VSpeed" type="HBoxContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/VSpeed2/MarginContainer"]
+layout_mode = 2
+
+[node name="Description" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/VSpeed2/MarginContainer/VSpeed"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Vertical Speed"
+horizontal_alignment = 1
+
+[node name="LevelLabel" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/VSpeed2/MarginContainer/VSpeed"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "LVL1"
+horizontal_alignment = 1
+
+[node name="LevelBar" type="ProgressBar" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/VSpeed2/MarginContainer/VSpeed"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/fill = SubResource("StyleBoxFlat_rkfnf")
+max_value = 5.0
+step = 1.0
+value = 1.0
+show_percentage = false
+
+[node name="Spacer4" type="Control" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/VSpeed2/MarginContainer/VSpeed"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="UpgradeButton" type="Button" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/VSpeed2/MarginContainer/VSpeed"]
+custom_minimum_size = Vector2(125, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/VSpeed2/MarginContainer/VSpeed/UpgradeButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/VSpeed2/MarginContainer/VSpeed/UpgradeButton/MarginContainer"]
+layout_mode = 2
+
+[node name="UpgradeName" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/VSpeed2/MarginContainer/VSpeed/UpgradeButton/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "UPGRADE"
+
+[node name="UpgradeSprite" type="TextureRect" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/VSpeed2/MarginContainer/VSpeed/UpgradeButton/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_oh26v")
+expand_mode = 3
+
+[node name="UpgradeCost" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/VSpeed2/MarginContainer/VSpeed/UpgradeButton/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "1"
+
+[node name="Spacer3" type="Control" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="HSpeed" type="PanelContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_smlha")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/HSpeed"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HSpeed" type="HBoxContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/HSpeed/MarginContainer"]
+layout_mode = 2
+
+[node name="Description" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/HSpeed/MarginContainer/HSpeed"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Horizontal Speed"
+horizontal_alignment = 1
+
+[node name="LevelLabel" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/HSpeed/MarginContainer/HSpeed"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "LVL1"
+horizontal_alignment = 1
+
+[node name="LevelBar" type="ProgressBar" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/HSpeed/MarginContainer/HSpeed"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/fill = SubResource("StyleBoxFlat_rkfnf")
+max_value = 5.0
+step = 1.0
+value = 1.0
+show_percentage = false
+
+[node name="Spacer4" type="Control" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/HSpeed/MarginContainer/HSpeed"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="UpgradeButton" type="Button" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/HSpeed/MarginContainer/HSpeed"]
+custom_minimum_size = Vector2(125, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/HSpeed/MarginContainer/HSpeed/UpgradeButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/HSpeed/MarginContainer/HSpeed/UpgradeButton/MarginContainer"]
+layout_mode = 2
+
+[node name="UpgradeName" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/HSpeed/MarginContainer/HSpeed/UpgradeButton/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "UPGRADE"
+
+[node name="UpgradeSprite" type="TextureRect" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/HSpeed/MarginContainer/HSpeed/UpgradeButton/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_oh26v")
+expand_mode = 3
+
+[node name="UpgradeCost" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/HSpeed/MarginContainer/HSpeed/UpgradeButton/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "1"
+
+[node name="Spacer2" type="Control" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="Health" type="PanelContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health"]
+layout_mode = 2
+
+[node name="HealthContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer"]
+layout_mode = 2
+
+[node name="Description" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 45
+text = "Increase your health to survive longer in the ocean"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Spacer" type="Control" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="MaxHealth" type="PanelContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_smlha")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/MaxHealth"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="MaxHealth" type="HBoxContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/MaxHealth/MarginContainer"]
+layout_mode = 2
+
+[node name="Description" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/MaxHealth/MarginContainer/MaxHealth"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Max Health"
+horizontal_alignment = 1
+
+[node name="LevelLabel" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/MaxHealth/MarginContainer/MaxHealth"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "LVL1"
+horizontal_alignment = 1
+
+[node name="LevelBar" type="ProgressBar" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/MaxHealth/MarginContainer/MaxHealth"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/fill = SubResource("StyleBoxFlat_rkfnf")
+max_value = 5.0
+step = 1.0
+value = 1.0
+show_percentage = false
+
+[node name="Spacer4" type="Control" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/MaxHealth/MarginContainer/MaxHealth"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="UpgradeButton" type="Button" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/MaxHealth/MarginContainer/MaxHealth"]
+custom_minimum_size = Vector2(125, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/MaxHealth/MarginContainer/MaxHealth/UpgradeButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/MaxHealth/MarginContainer/MaxHealth/UpgradeButton/MarginContainer"]
+layout_mode = 2
+
+[node name="UpgradeName" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/MaxHealth/MarginContainer/MaxHealth/UpgradeButton/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "UPGRADE"
+
+[node name="UpgradeSprite" type="TextureRect" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/MaxHealth/MarginContainer/MaxHealth/UpgradeButton/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_oh26v")
+expand_mode = 3
+
+[node name="UpgradeCost" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/MaxHealth/MarginContainer/MaxHealth/UpgradeButton/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "1"
+
+[node name="Spacer4" type="Control" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="HealthRegen" type="PanelContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_smlha")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/HealthRegen"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HealthRegen" type="HBoxContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/HealthRegen/MarginContainer"]
+layout_mode = 2
+
+[node name="Description" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/HealthRegen/MarginContainer/HealthRegen"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Health Regen"
+horizontal_alignment = 1
+
+[node name="LevelLabel" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/HealthRegen/MarginContainer/HealthRegen"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "LVL1"
+horizontal_alignment = 1
+
+[node name="LevelBar" type="ProgressBar" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/HealthRegen/MarginContainer/HealthRegen"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/fill = SubResource("StyleBoxFlat_rkfnf")
+max_value = 5.0
+step = 1.0
+value = 1.0
+show_percentage = false
+
+[node name="Spacer4" type="Control" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/HealthRegen/MarginContainer/HealthRegen"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="UpgradeButton" type="Button" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/HealthRegen/MarginContainer/HealthRegen"]
+custom_minimum_size = Vector2(125, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/HealthRegen/MarginContainer/HealthRegen/UpgradeButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/HealthRegen/MarginContainer/HealthRegen/UpgradeButton/MarginContainer"]
+layout_mode = 2
+
+[node name="UpgradeName" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/HealthRegen/MarginContainer/HealthRegen/UpgradeButton/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "UPGRADE"
+
+[node name="UpgradeSprite" type="TextureRect" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/HealthRegen/MarginContainer/HealthRegen/UpgradeButton/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_oh26v")
+expand_mode = 3
+
+[node name="UpgradeCost" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/HealthRegen/MarginContainer/HealthRegen/UpgradeButton/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "1"
+
+[node name="Spacer3" type="Control" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="Spacer2" type="Control" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="Vision" type="PanelContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer"]
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision"]
+layout_mode = 2
+
+[node name="VisionContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer"]
+layout_mode = 2
+
+[node name="Description" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 45
+text = "Increase your vision to see more fish and dangers"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Spacer" type="Control" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="MaxVision" type="PanelContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_smlha")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/MaxVision"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="MaxVision" type="HBoxContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/MaxVision/MarginContainer"]
+layout_mode = 2
+
+[node name="Description" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/MaxVision/MarginContainer/MaxVision"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Max Vision"
+horizontal_alignment = 1
+
+[node name="LevelLabel" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/MaxVision/MarginContainer/MaxVision"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "LVL1"
+horizontal_alignment = 1
+
+[node name="LevelBar" type="ProgressBar" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/MaxVision/MarginContainer/MaxVision"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/fill = SubResource("StyleBoxFlat_rkfnf")
+max_value = 5.0
+step = 1.0
+value = 1.0
+show_percentage = false
+
+[node name="Spacer4" type="Control" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/MaxVision/MarginContainer/MaxVision"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="UpgradeButton" type="Button" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/MaxVision/MarginContainer/MaxVision"]
+custom_minimum_size = Vector2(125, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/MaxVision/MarginContainer/MaxVision/UpgradeButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/MaxVision/MarginContainer/MaxVision/UpgradeButton/MarginContainer"]
+layout_mode = 2
+
+[node name="UpgradeName" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/MaxVision/MarginContainer/MaxVision/UpgradeButton/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "UPGRADE"
+
+[node name="UpgradeSprite" type="TextureRect" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/MaxVision/MarginContainer/MaxVision/UpgradeButton/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_oh26v")
+expand_mode = 3
+
+[node name="UpgradeCost" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/MaxVision/MarginContainer/MaxVision/UpgradeButton/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "1"
+
+[node name="Spacer4" type="Control" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="FishVision" type="PanelContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_smlha")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/FishVision"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="FishVision" type="HBoxContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/FishVision/MarginContainer"]
+layout_mode = 2
+
+[node name="Description" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/FishVision/MarginContainer/FishVision"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Glowing Fish"
+horizontal_alignment = 1
+
+[node name="LevelLabel" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/FishVision/MarginContainer/FishVision"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "LVL1"
+horizontal_alignment = 1
+
+[node name="LevelBar" type="ProgressBar" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/FishVision/MarginContainer/FishVision"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/fill = SubResource("StyleBoxFlat_rkfnf")
+max_value = 5.0
+step = 1.0
+value = 1.0
+show_percentage = false
+
+[node name="Spacer4" type="Control" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/FishVision/MarginContainer/FishVision"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="UpgradeButton" type="Button" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/FishVision/MarginContainer/FishVision"]
+custom_minimum_size = Vector2(125, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/FishVision/MarginContainer/FishVision/UpgradeButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/FishVision/MarginContainer/FishVision/UpgradeButton/MarginContainer"]
+layout_mode = 2
+
+[node name="UpgradeName" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/FishVision/MarginContainer/FishVision/UpgradeButton/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "UPGRADE"
+
+[node name="UpgradeSprite" type="TextureRect" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/FishVision/MarginContainer/FishVision/UpgradeButton/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_oh26v")
+expand_mode = 3
+
+[node name="UpgradeCost" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/FishVision/MarginContainer/FishVision/UpgradeButton/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "1"
+
+[node name="Spacer3" type="Control" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="DangerVision" type="PanelContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_smlha")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/DangerVision"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="DangerVision" type="HBoxContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/DangerVision/MarginContainer"]
+layout_mode = 2
+
+[node name="Description" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/DangerVision/MarginContainer/DangerVision"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Glowing Dangers"
+horizontal_alignment = 1
+
+[node name="LevelLabel" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/DangerVision/MarginContainer/DangerVision"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "LVL1"
+horizontal_alignment = 1
+
+[node name="LevelBar" type="ProgressBar" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/DangerVision/MarginContainer/DangerVision"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/fill = SubResource("StyleBoxFlat_rkfnf")
+max_value = 5.0
+step = 1.0
+value = 1.0
+show_percentage = false
+
+[node name="Spacer4" type="Control" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/DangerVision/MarginContainer/DangerVision"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="UpgradeButton" type="Button" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/DangerVision/MarginContainer/DangerVision"]
+custom_minimum_size = Vector2(125, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/DangerVision/MarginContainer/DangerVision/UpgradeButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/DangerVision/MarginContainer/DangerVision/UpgradeButton/MarginContainer"]
+layout_mode = 2
+
+[node name="UpgradeName" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/DangerVision/MarginContainer/DangerVision/UpgradeButton/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "UPGRADE"
+
+[node name="UpgradeSprite" type="TextureRect" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/DangerVision/MarginContainer/DangerVision/UpgradeButton/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_oh26v")
+expand_mode = 3
+
+[node name="UpgradeCost" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/DangerVision/MarginContainer/DangerVision/UpgradeButton/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "1"
+
+[node name="Spacer2" type="Control" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="SubmarineNameContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/HFlowContainer"]
+custom_minimum_size = Vector2(900, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HFlowContainer/SubmarineNameContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="SubmarineNameLabel" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/SubmarineNameContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "Submarine Name -- 10 Dives"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+
+[editable path="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/VBoxContainer/CollectedFishContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/FishPanel"]

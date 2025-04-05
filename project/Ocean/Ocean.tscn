@@ -11,9 +11,12 @@ script = ExtResource("1_em6cw")
 fishTypes = Array[ExtResource("2_5jrga")]([ExtResource("4_awpb8"), ExtResource("5_3t3ig"), ExtResource("3_r6f36")])
 
 [node name="FishSpawnTimer" type="Timer" parent="."]
+unique_name_in_owner = true
 autostart = true
 
 [node name="PowerDrainTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.2
 autostart = true
 
 [connection signal="timeout" from="FishSpawnTimer" to="." method="_on_fish_spawn_timer_timeout"]
