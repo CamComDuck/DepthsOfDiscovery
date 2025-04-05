@@ -2,20 +2,29 @@
 class_name Submarine
 extends CharacterBody2D
 
+signal onPowerHit (minusPower : float)
+signal onHealthHit (minusHealth : float)
+
 const MOVE_SPEED = 150.0
 const SCAN_SPEED = 50.0
 
 var allowMovement := false
-var powerDrain := 10.0
+
+# Ship Stats:
+var powerDrain := 5.0
+var powerHit := 5.0
+var healthHit := 15.0
 
 @onready var scannerCast := %ScannerCast as ShapeCast2D
+@onready var shipCast := %ShipCast as ShapeCast2D
 @onready var scannerSprite := %SpriteScanner as Sprite2D
 
 
 func _physics_process(delta: float) -> void:
 	if allowMovement:
 		handle_movement(delta)
-		handle_collisions()
+		handle_scanner_collisions()
+		handle_ship_collisions()
 	
 
 func handle_movement(delta: float) -> void:
@@ -40,10 +49,18 @@ func handle_movement(delta: float) -> void:
 	move_and_slide()
 
 
-func handle_collisions() -> void:
+func handle_scanner_collisions() -> void:
 	for i in scannerCast.get_collision_count():
 		if scannerCast.get_collider(i) is Fish and Input.is_action_just_pressed("collect"):
 			var scannedFish := scannerCast.get_collider(i) as Fish
 			scannedFish.queue_free()
+			onPowerHit.emit(powerHit)
 			Currency.fishCollectedCount[scannedFish.fishType.name] = Currency.fishCollectedCount[scannedFish.fishType.name] + 1
 			print(Currency.fishCollectedCount)
+
+
+func handle_ship_collisions() -> void:
+	for i in shipCast.get_collision_count():
+		if shipCast.get_collider(i) is Fish:
+			onHealthHit.emit(healthHit)
+			shipCast.get_collider(i).queue_free()
