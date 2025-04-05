@@ -35,6 +35,7 @@ folder_colors={
 "res://Shop/": "orange",
 "res://Submarine/": "yellow",
 "res://Title/": "orange",
+"res://Win/": "orange",
 "res://World/": "purple"
 }
 

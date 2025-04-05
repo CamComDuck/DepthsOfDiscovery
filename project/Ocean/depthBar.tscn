@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://5mu2n3sbh36c"]
+
+[ext_resource type="Script" path="res://Ocean/depth_bar.gd" id="1_whe08"]
+
+[node name="DepthBar" type="ProgressBar"]
+offset_left = -620.58
+offset_top = -100.0
+offset_right = -570.58
+offset_bottom = 100.0
+max_value = 1.0
+value = 1.0
+fill_mode = 3
+show_percentage = false
+script = ExtResource("1_whe08")

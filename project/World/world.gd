@@ -41,6 +41,9 @@ func onSceneChanged(newScenePath : String) -> void:
 		submarine.global_position = Vector2(0,0)
 		background.hide()
 		submarine.allowMovement = false
+	elif currentScene is WinGame:
+		submarine.global_position = Vector2(0,0)
+		background.hide()
 	
 	await fade_in.finished
 	currentScenePath = newScenePath
