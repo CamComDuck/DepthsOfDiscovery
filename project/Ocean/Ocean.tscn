@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://4ohr5frmjhil"]
+[gd_scene load_steps=6 format=3 uid="uid://4ohr5frmjhil"]
 
 [ext_resource type="Script" path="res://Ocean/ocean.gd" id="1_em6cw"]
-[ext_resource type="PackedScene" uid="uid://c4cubchmmegrr" path="res://Submarine/Submarine.tscn" id="1_ffjoe"]
 [ext_resource type="Script" path="res://Fish/FishType/FishType.gd" id="2_5jrga"]
 [ext_resource type="Resource" uid="uid://b006g2ylwuv0t" path="res://Fish/FishType/fishBlue.tres" id="3_r6f36"]
 [ext_resource type="Resource" uid="uid://binu1bmbiedlu" path="res://Fish/FishType/fishPink.tres" id="4_awpb8"]
@@ -11,29 +10,7 @@
 script = ExtResource("1_em6cw")
 fishTypes = Array[ExtResource("2_5jrga")]([ExtResource("4_awpb8"), ExtResource("5_3t3ig"), ExtResource("3_r6f36")])
 
-[node name="Submarine" parent="." instance=ExtResource("1_ffjoe")]
-unique_name_in_owner = true
-
-[node name="Camera2D" type="Camera2D" parent="Submarine"]
-
-[node name="Background" type="ColorRect" parent="Submarine"]
-z_index = -100
-z_as_relative = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -640.0
-offset_top = -360.0
-offset_right = 640.0
-offset_bottom = 360.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
-[connection signal="onFishScanned" from="Submarine" to="." method="_on_submarine_on_fish_scanned"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

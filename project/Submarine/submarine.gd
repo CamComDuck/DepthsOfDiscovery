@@ -2,8 +2,6 @@
 class_name Submarine
 extends CharacterBody2D
 
-signal onFishScanned (fishScanned : FishType)
-
 const MOVE_SPEED = 150.0
 const SCAN_SPEED = 50.0
 
@@ -42,5 +40,6 @@ func handle_collisions() -> void:
 	for i in scannerCast.get_collision_count():
 		if scannerCast.get_collider(i) is Fish and Input.is_action_just_pressed("collect"):
 			var scannedFish := scannerCast.get_collider(i) as Fish
-			onFishScanned.emit(scannedFish.fishType)
 			scannedFish.queue_free()
+			Currency.fishCollectedCount[scannedFish.fishType.name] = Currency.fishCollectedCount[scannedFish.fishType.name] + 1
+			print(Currency.fishCollectedCount)

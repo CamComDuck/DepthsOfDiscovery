@@ -1,18 +1,21 @@
 class_name Ocean
-extends Node2D
-
-var fishCollectedCount := {} 
+extends Map
 
 @export var fishTypes : Array[FishType]
 
 @onready var fish := load("res://Fish/fish.tscn") as PackedScene
-@onready var submarine := %Submarine as Submarine
+var submarine : Submarine
 
 
 func _ready() -> void:
-	for i in fishTypes:
-		var temp := {i.name: 0}
-		fishCollectedCount.merge(temp)
+	for i in get_parent().get_child_count():
+		if get_parent().get_child(i) is Submarine:
+			submarine = get_parent().get_child(i) as Submarine
+	
+	if Currency.fishCollectedCount.is_empty():
+		for i in fishTypes:
+			var temp := {i.name: 0}
+			Currency.fishCollectedCount.merge(temp)
 
 
 func _on_timer_timeout() -> void:
@@ -23,8 +26,4 @@ func _on_timer_timeout() -> void:
 	var randX := randf_range(submarine.global_position.x - 500, submarine.global_position.x + 500)
 	var randY := randf_range(submarine.global_position.y + 250, submarine.global_position.y + 750)
 	newFish.global_position = Vector2(randX, randY)
-
-
-func _on_submarine_on_fish_scanned(fishScanned: FishType) -> void:
-	fishCollectedCount[fishScanned.name] = fishCollectedCount[fishScanned.name] + 1
-	print(fishCollectedCount)
+	onSceneChanged.emit("res://Shop/Shop.tscn")

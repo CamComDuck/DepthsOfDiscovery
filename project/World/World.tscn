@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://crspguap2g2d5"]
+
+[ext_resource type="Script" path="res://World/world.gd" id="1_hqvjj"]
+[ext_resource type="PackedScene" uid="uid://c4cubchmmegrr" path="res://Submarine/Submarine.tscn" id="2_63a7y"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_hqvjj")
+
+[node name="Submarine" parent="." instance=ExtResource("2_63a7y")]
+unique_name_in_owner = true
+
+[node name="Camera2D" type="Camera2D" parent="Submarine"]
+
+[node name="Background" type="ColorRect" parent="Submarine"]
+unique_name_in_owner = true
+z_index = -100
+z_as_relative = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -360.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true

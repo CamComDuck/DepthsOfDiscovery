@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://e2w67wdwneby"]
+
+[ext_resource type="Texture2D" uid="uid://blqbto7tvh6ev" path="res://icon.svg" id="1_ndgnf"]
+[ext_resource type="Script" path="res://Shop/shop.gd" id="1_rncua"]
+
+[node name="Shop" type="Node2D"]
+modulate = Color(1, 1, 1, 0)
+script = ExtResource("1_rncua")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ndgnf")
