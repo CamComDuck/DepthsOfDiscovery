@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="UpgradeType" load_steps=4 format=3 uid="uid://cxnvtastfq53d"]
+
+[ext_resource type="Script" path="res://Fish/FishType/FishType.gd" id="1_f2dw2"]
+[ext_resource type="Resource" uid="uid://b006g2ylwuv0t" path="res://Fish/FishType/fishBlue.tres" id="2_veke5"]
+[ext_resource type="Script" path="res://Shop/UpgradeType/upgradeType.gd" id="3_cpa3l"]
+
+[resource]
+script = ExtResource("3_cpa3l")
+name = "Glowing Fish"
+maxLevel = 5
+fishCost = Array[ExtResource("1_f2dw2")]([ExtResource("2_veke5"), ExtResource("2_veke5"), ExtResource("2_veke5"), ExtResource("2_veke5")])
+fishCount = Array[int]([1, 2, 3, 4])
+levelReward = Array[float]([5.0, 10.0, 15.0, 20.0, 25.0])

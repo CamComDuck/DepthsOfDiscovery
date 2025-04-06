@@ -1,6 +1,9 @@
 class_name World
 extends Node2D
 
+@export var upgradeTypes : Array[UpgradeType]
+@export var fishTypes : Array[FishType]
+
 var currentScenePath : String
 var currentScene : Map
 
@@ -9,6 +12,16 @@ var currentScene : Map
 @onready var subCamera := %SubCamera as Camera2D
 
 func _ready() -> void:
+	if Currency.fishCollectedCount.is_empty():
+		for i in fishTypes:
+			var temp := {i: 0}
+			Currency.fishCollectedCount.merge(temp)
+	
+	if Currency.upgradeLevels.is_empty():
+		for i in upgradeTypes:
+			var temp := {i: 0}
+			Currency.upgradeLevels.merge(temp)
+			
 	currentScenePath = "res://Ocean/Ocean.tscn"
 	currentScene = load(currentScenePath).instantiate() as Map
 	currentScene.connect("onSceneChanged", onSceneChanged)

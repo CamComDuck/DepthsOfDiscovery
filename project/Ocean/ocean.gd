@@ -1,8 +1,6 @@
 class_name Ocean
 extends Map
 
-@export var fishTypes : Array[FishType]
-
 const maxDepthY := -10000.0
 
 var submarine : Submarine
@@ -12,7 +10,7 @@ var fishPanel : FishPanel
 
 var powerLevel := 100.0
 var healthLevel := 100.0
-var missionEnded := false
+var diveEnded := false
 var currentDepth := 100.0
 
 @onready var fish := load("res://Fish/fish.tscn") as PackedScene
@@ -41,19 +39,13 @@ func _ready() -> void:
 					if fishPanel.isPanelEmpty():
 						fishPanel.hide()
 			
-	
-	if Currency.fishCollectedCount.is_empty():
-		for i in fishTypes:
-			var temp := {i.name: 0}
-			Currency.fishCollectedCount.merge(temp)
-			
 	healthPowerBars.setPower(powerLevel)
 	healthPowerBars.setHealth(healthLevel)
 	Currency.totalDives += 1
 	
 
 func _physics_process(_delta: float) -> void:
-	if not missionEnded:
+	if not diveEnded:
 		var depthPercent := 1 - ((submarine.global_position.y / maxDepthY) * -1)
 		depthBar.setDepth(depthPercent)
 		if depthPercent <= 0: # Win
@@ -65,11 +57,11 @@ func checkDiveEnded(isWin : bool) -> void:
 	if powerLevel > 0 and healthLevel > 0 and not isWin:
 		return
 	
-	if missionEnded:
+	if diveEnded:
 		return
 	
-	# Mission Ended:
-	missionEnded = true
+	# Dive Ended:
+	diveEnded = true
 	healthPowerBars.queue_free()
 	depthBar.queue_free()
 	fish_spawn_timer.stop()
@@ -81,48 +73,54 @@ func checkDiveEnded(isWin : bool) -> void:
 		onSceneChanged.emit("res://Win/winGame.tscn")
 	
 	
-func onPowerHit(minusPower : float) -> void:
-	powerLevel -= minusPower
-	healthPowerBars.setPower(powerLevel)
-	checkDiveEnded(false)
+func onPowerHit(minusPower : float) -> void:\
+	if not diveEnded:
+		powerLevel -= minusPower
+		healthPowerBars.setPower(powerLevel)
+		checkDiveEnded(false)
 
 
 func onHealthHit(minusHealth : float) -> void:
-	healthLevel -= minusHealth
-	healthPowerBars.setHealth(healthLevel)
-	checkDiveEnded(false)
+	if not diveEnded:
+		healthLevel -= minusHealth
+		healthPowerBars.setHealth(healthLevel)
+		checkDiveEnded(false)
 	
 
 func onFishCollected(fishType : FishType) -> void:
-	if not fishPanel.visible:
-		fishPanel.show()
-	
-	if Currency.fishCollectedCount[fishType.name] == 0:
-		fishPanel.addFishRow(fishType)
+	if not diveEnded:
+		if not fishPanel.visible:
+			fishPanel.show()
 		
-	Currency.fishCollectedCount[fishType.name] += 1
-	fishPanel.updateFishCounts()
+		if Currency.fishCollectedCount[fishType] == 0:
+			fishPanel.addFishRow(fishType)
+			
+		Currency.fishCollectedCount[fishType] += 1
+		fishPanel.updateFishCounts()
 
 
 func _on_fish_spawn_timer_timeout() -> void:
-	var newFish := fish.instantiate() as Fish
-	var newFishType : FishType = fishTypes[randi_range(0, fishTypes.size() - 1)]
-	newFish.load_type(newFishType)
-	
-	var randX1 := randf_range(submarine.global_position.x - 600, submarine.global_position.x - 350)
-	var randX2 := randf_range(submarine.global_position.x + 600, submarine.global_position.x + 350)
-	var randX := randi_range(0, 1)
-	var randY := randf_range(submarine.global_position.y + 400, submarine.global_position.y + 800)
-	
-	if randX == 0:
-		newFish.global_position = Vector2(randX1, randY)
-	else:
-		newFish.global_position = Vector2(randX2, randY)
+	if not diveEnded:
+		var newFish := fish.instantiate() as Fish
+		var fishTypes : Array = Currency.fishCollectedCount.keys()
+		var newFishType : FishType = fishTypes[randi_range(0, fishTypes.size() - 1)]
+		newFish.load_type(newFishType)
+		
+		var randX1 := randf_range(submarine.global_position.x - 600, submarine.global_position.x - 350)
+		var randX2 := randf_range(submarine.global_position.x + 600, submarine.global_position.x + 350)
+		var randX := randi_range(0, 1)
+		var randY := randf_range(submarine.global_position.y + 400, submarine.global_position.y + 800)
+		
+		if randX == 0:
+			newFish.global_position = Vector2(randX1, randY)
+		else:
+			newFish.global_position = Vector2(randX2, randY)
 
-	add_child(newFish)
+		add_child(newFish)
 	
 
 func _on_power_drain_timer_timeout() -> void:
-	powerLevel -= submarine.powerDrain
-	healthPowerBars.setPower(powerLevel)
-	checkDiveEnded(false)
+	if not diveEnded:
+		powerLevel -= submarine.powerDrain
+		healthPowerBars.setPower(powerLevel)
+		checkDiveEnded(false)

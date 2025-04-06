@@ -1,11 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://crspguap2g2d5"]
+[gd_scene load_steps=17 format=3 uid="uid://crspguap2g2d5"]
 
 [ext_resource type="Script" path="res://World/world.gd" id="1_hqvjj"]
+[ext_resource type="Script" path="res://Shop/UpgradeType/upgradeType.gd" id="2_1ej72"]
 [ext_resource type="PackedScene" uid="uid://c4cubchmmegrr" path="res://Submarine/Submarine.tscn" id="2_63a7y"]
+[ext_resource type="Resource" uid="uid://dp63s42vn1s6v" path="res://Shop/UpgradeType/VSpeed.tres" id="3_3dan7"]
 [ext_resource type="PackedScene" uid="uid://uiu8krrnixr8" path="res://Ocean/fishPanel.tscn" id="3_vgon3"]
+[ext_resource type="Script" path="res://Fish/FishType/FishType.gd" id="4_crqiq"]
+[ext_resource type="Resource" uid="uid://45fd2a6d6n05" path="res://Shop/UpgradeType/DangerVision.tres" id="4_dww0f"]
+[ext_resource type="Resource" uid="uid://w7btxuhlww3j" path="res://Shop/UpgradeType/Battery.tres" id="4_h8qqj"]
+[ext_resource type="Resource" uid="uid://b006g2ylwuv0t" path="res://Fish/FishType/fishBlue.tres" id="5_n7tex"]
+[ext_resource type="Resource" uid="uid://cxnvtastfq53d" path="res://Shop/UpgradeType/FishVision.tres" id="5_njsrq"]
+[ext_resource type="Resource" uid="uid://binu1bmbiedlu" path="res://Fish/FishType/fishPink.tres" id="6_7m52n"]
+[ext_resource type="Resource" uid="uid://b5olwl81eroa5" path="res://Shop/UpgradeType/HealthRegen.tres" id="6_nm2o0"]
+[ext_resource type="Resource" uid="uid://mnpijaec157k" path="res://Fish/FishType/fishPurple.tres" id="7_cfgwd"]
+[ext_resource type="Resource" uid="uid://bjl3jpb3nj6ad" path="res://Shop/UpgradeType/HSpeed.tres" id="7_tj0yg"]
+[ext_resource type="Resource" uid="uid://ch2km3n3vyguw" path="res://Shop/UpgradeType/MaxHealth.tres" id="8_6tkfw"]
+[ext_resource type="Resource" uid="uid://bunwi77dxdi7g" path="res://Shop/UpgradeType/MaxVision.tres" id="9_0lwp0"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_hqvjj")
+upgradeTypes = Array[ExtResource("2_1ej72")]([ExtResource("4_h8qqj"), ExtResource("4_dww0f"), ExtResource("5_njsrq"), ExtResource("6_nm2o0"), ExtResource("7_tj0yg"), ExtResource("8_6tkfw"), ExtResource("9_0lwp0"), ExtResource("3_3dan7")])
+fishTypes = Array[ExtResource("4_crqiq")]([ExtResource("5_n7tex"), ExtResource("6_7m52n"), ExtResource("7_cfgwd")])
 
 [node name="Submarine" parent="." instance=ExtResource("2_63a7y")]
 unique_name_in_owner = true

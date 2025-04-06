@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="UpgradeType" load_steps=4 format=3 uid="uid://w7btxuhlww3j"]
+
+[ext_resource type="Script" path="res://Fish/FishType/FishType.gd" id="1_we4ei"]
+[ext_resource type="Script" path="res://Shop/UpgradeType/upgradeType.gd" id="2_qc6wk"]
+[ext_resource type="Resource" uid="uid://binu1bmbiedlu" path="res://Fish/FishType/fishPink.tres" id="2_qi2j3"]
+
+[resource]
+script = ExtResource("2_qc6wk")
+name = "Battery"
+maxLevel = 5
+fishCost = Array[ExtResource("1_we4ei")]([ExtResource("2_qi2j3"), ExtResource("2_qi2j3"), ExtResource("2_qi2j3"), ExtResource("2_qi2j3")])
+fishCount = Array[int]([2, 3, 4, 5])
+levelReward = Array[float]([5.0, 10.0, 15.0, 20.0, 25.0])

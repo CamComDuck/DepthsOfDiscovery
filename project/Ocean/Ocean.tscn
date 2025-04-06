@@ -1,14 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://4ohr5frmjhil"]
+[gd_scene load_steps=2 format=3 uid="uid://4ohr5frmjhil"]
 
 [ext_resource type="Script" path="res://Ocean/ocean.gd" id="1_em6cw"]
-[ext_resource type="Script" path="res://Fish/FishType/FishType.gd" id="2_5jrga"]
-[ext_resource type="Resource" uid="uid://b006g2ylwuv0t" path="res://Fish/FishType/fishBlue.tres" id="3_r6f36"]
-[ext_resource type="Resource" uid="uid://binu1bmbiedlu" path="res://Fish/FishType/fishPink.tres" id="4_awpb8"]
-[ext_resource type="Resource" uid="uid://mnpijaec157k" path="res://Fish/FishType/fishPurple.tres" id="5_3t3ig"]
 
 [node name="Ocean" type="Node2D"]
 script = ExtResource("1_em6cw")
-fishTypes = Array[ExtResource("2_5jrga")]([ExtResource("4_awpb8"), ExtResource("5_3t3ig"), ExtResource("3_r6f36")])
 
 [node name="FishSpawnTimer" type="Timer" parent="."]
 unique_name_in_owner = true

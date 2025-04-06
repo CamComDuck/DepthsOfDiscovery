@@ -17,6 +17,6 @@ func setFishInfo(fishInfo : FishType) -> void:
 
 func setFishCount() -> void:
 	for i in Currency.fishCollectedCount:
-		if i == fishType.name:
-			fish_count.text = str(Currency.fishCollectedCount[fishType.name])
+		if i == fishType:
+			fish_count.text = str(Currency.fishCollectedCount[fishType])
 			return

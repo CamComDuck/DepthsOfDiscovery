@@ -1,7 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://e2w67wdwneby"]
+[gd_scene load_steps=16 format=3 uid="uid://e2w67wdwneby"]
 
 [ext_resource type="Script" path="res://Shop/shop.gd" id="1_rncua"]
+[ext_resource type="Script" path="res://Shop/upgrade.gd" id="2_1q6i1"]
+[ext_resource type="Resource" uid="uid://w7btxuhlww3j" path="res://Shop/UpgradeType/Battery.tres" id="3_514ql"]
+[ext_resource type="Resource" uid="uid://dp63s42vn1s6v" path="res://Shop/UpgradeType/VSpeed.tres" id="3_dleh4"]
 [ext_resource type="Texture2D" uid="uid://d4b530cifxmvp" path="res://Fish/TEMP_fish_blue.png" id="5_oh26v"]
+[ext_resource type="Resource" uid="uid://bjl3jpb3nj6ad" path="res://Shop/UpgradeType/HSpeed.tres" id="6_bve64"]
+[ext_resource type="Resource" uid="uid://ch2km3n3vyguw" path="res://Shop/UpgradeType/MaxHealth.tres" id="7_kfcee"]
+[ext_resource type="Resource" uid="uid://b5olwl81eroa5" path="res://Shop/UpgradeType/HealthRegen.tres" id="8_ufgib"]
+[ext_resource type="Resource" uid="uid://bunwi77dxdi7g" path="res://Shop/UpgradeType/MaxVision.tres" id="9_k0hop"]
+[ext_resource type="Resource" uid="uid://cxnvtastfq53d" path="res://Shop/UpgradeType/FishVision.tres" id="10_h4ln6"]
+[ext_resource type="Resource" uid="uid://45fd2a6d6n05" path="res://Shop/UpgradeType/DangerVision.tres" id="11_u8dxb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_76dbx"]
 
@@ -126,6 +135,8 @@ theme_override_constants/margin_bottom = 10
 
 [node name="Battery" type="HBoxContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/Battery/MarginContainer"]
 layout_mode = 2
+script = ExtResource("2_1q6i1")
+upgradeType = ExtResource("3_514ql")
 
 [node name="Description" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/Battery/MarginContainer/Battery"]
 layout_mode = 2
@@ -133,14 +144,14 @@ size_flags_horizontal = 3
 text = "Battery"
 horizontal_alignment = 1
 
-[node name="LevelLabel2" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/Battery/MarginContainer/Battery"]
+[node name="LevelLabel" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/Battery/MarginContainer/Battery"]
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_stretch_ratio = 0.5
 text = "LVL1"
 horizontal_alignment = 2
 
-[node name="LevelBar2" type="ProgressBar" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/Battery/MarginContainer/Battery"]
+[node name="LevelBar" type="ProgressBar" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/Battery/MarginContainer/Battery"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -210,6 +221,8 @@ theme_override_constants/margin_bottom = 10
 
 [node name="VSpeed" type="HBoxContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/VSpeed/MarginContainer"]
 layout_mode = 2
+script = ExtResource("2_1q6i1")
+upgradeType = ExtResource("3_dleh4")
 
 [node name="Description" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/VSpeed/MarginContainer/VSpeed"]
 layout_mode = 2
@@ -217,14 +230,14 @@ size_flags_horizontal = 3
 text = "Vertical Speed"
 horizontal_alignment = 1
 
-[node name="LevelLabel2" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/VSpeed/MarginContainer/VSpeed"]
+[node name="LevelLabel" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/VSpeed/MarginContainer/VSpeed"]
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_stretch_ratio = 0.5
 text = "LVL1"
 horizontal_alignment = 2
 
-[node name="LevelBar2" type="ProgressBar" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/VSpeed/MarginContainer/VSpeed"]
+[node name="LevelBar" type="ProgressBar" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/VSpeed/MarginContainer/VSpeed"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -294,6 +307,8 @@ theme_override_constants/margin_bottom = 10
 
 [node name="HSpeed" type="HBoxContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/HSpeed/MarginContainer"]
 layout_mode = 2
+script = ExtResource("2_1q6i1")
+upgradeType = ExtResource("6_bve64")
 
 [node name="Description" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/HSpeed/MarginContainer/HSpeed"]
 layout_mode = 2
@@ -301,14 +316,14 @@ size_flags_horizontal = 3
 text = "Horizontal Speed"
 horizontal_alignment = 1
 
-[node name="LevelLabel2" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/HSpeed/MarginContainer/HSpeed"]
+[node name="LevelLabel" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/HSpeed/MarginContainer/HSpeed"]
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_stretch_ratio = 0.5
 text = "LVL1"
 horizontal_alignment = 2
 
-[node name="LevelBar2" type="ProgressBar" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/HSpeed/MarginContainer/HSpeed"]
+[node name="LevelBar" type="ProgressBar" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/HSpeed/MarginContainer/HSpeed"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -405,6 +420,8 @@ theme_override_constants/margin_bottom = 10
 
 [node name="MaxHealth" type="HBoxContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/MaxHealth/MarginContainer"]
 layout_mode = 2
+script = ExtResource("2_1q6i1")
+upgradeType = ExtResource("7_kfcee")
 
 [node name="Description" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/MaxHealth/MarginContainer/MaxHealth"]
 layout_mode = 2
@@ -412,14 +429,14 @@ size_flags_horizontal = 3
 text = "Max Health"
 horizontal_alignment = 1
 
-[node name="LevelLabel2" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/MaxHealth/MarginContainer/MaxHealth"]
+[node name="LevelLabel" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/MaxHealth/MarginContainer/MaxHealth"]
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_stretch_ratio = 0.5
 text = "LVL1"
 horizontal_alignment = 2
 
-[node name="LevelBar2" type="ProgressBar" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/MaxHealth/MarginContainer/MaxHealth"]
+[node name="LevelBar" type="ProgressBar" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/MaxHealth/MarginContainer/MaxHealth"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -489,6 +506,8 @@ theme_override_constants/margin_bottom = 10
 
 [node name="HealthRegen" type="HBoxContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/HealthRegen/MarginContainer"]
 layout_mode = 2
+script = ExtResource("2_1q6i1")
+upgradeType = ExtResource("8_ufgib")
 
 [node name="Description" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/HealthRegen/MarginContainer/HealthRegen"]
 layout_mode = 2
@@ -496,14 +515,14 @@ size_flags_horizontal = 3
 text = "Health Regen"
 horizontal_alignment = 1
 
-[node name="LevelLabel2" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/HealthRegen/MarginContainer/HealthRegen"]
+[node name="LevelLabel" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/HealthRegen/MarginContainer/HealthRegen"]
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_stretch_ratio = 0.5
 text = "LVL1"
 horizontal_alignment = 2
 
-[node name="LevelBar2" type="ProgressBar" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/HealthRegen/MarginContainer/HealthRegen"]
+[node name="LevelBar" type="ProgressBar" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/HealthRegen/MarginContainer/HealthRegen"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -606,6 +625,8 @@ theme_override_constants/margin_bottom = 10
 
 [node name="MaxVision" type="HBoxContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/MaxVision/MarginContainer"]
 layout_mode = 2
+script = ExtResource("2_1q6i1")
+upgradeType = ExtResource("9_k0hop")
 
 [node name="Description" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/MaxVision/MarginContainer/MaxVision"]
 layout_mode = 2
@@ -690,6 +711,8 @@ theme_override_constants/margin_bottom = 10
 
 [node name="FishVision" type="HBoxContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/FishVision/MarginContainer"]
 layout_mode = 2
+script = ExtResource("2_1q6i1")
+upgradeType = ExtResource("10_h4ln6")
 
 [node name="Description" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/FishVision/MarginContainer/FishVision"]
 layout_mode = 2
@@ -697,14 +720,14 @@ size_flags_horizontal = 3
 text = "Glowing Fish"
 horizontal_alignment = 1
 
-[node name="LevelLabel2" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/FishVision/MarginContainer/FishVision"]
+[node name="LevelLabel" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/FishVision/MarginContainer/FishVision"]
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_stretch_ratio = 0.5
 text = "LVL1"
 horizontal_alignment = 2
 
-[node name="LevelBar2" type="ProgressBar" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/FishVision/MarginContainer/FishVision"]
+[node name="LevelBar" type="ProgressBar" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/FishVision/MarginContainer/FishVision"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -774,6 +797,8 @@ theme_override_constants/margin_bottom = 10
 
 [node name="DangerVision" type="HBoxContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/DangerVision/MarginContainer"]
 layout_mode = 2
+script = ExtResource("2_1q6i1")
+upgradeType = ExtResource("11_u8dxb")
 
 [node name="Description" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/DangerVision/MarginContainer/DangerVision"]
 layout_mode = 2
@@ -781,14 +806,14 @@ size_flags_horizontal = 3
 text = "Glowing Dangers"
 horizontal_alignment = 1
 
-[node name="LevelLabel2" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/DangerVision/MarginContainer/DangerVision"]
+[node name="LevelLabel" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/DangerVision/MarginContainer/DangerVision"]
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_stretch_ratio = 0.5
 text = "LVL1"
 horizontal_alignment = 2
 
-[node name="LevelBar2" type="ProgressBar" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/DangerVision/MarginContainer/DangerVision"]
+[node name="LevelBar" type="ProgressBar" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/DangerVision/MarginContainer/DangerVision"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
