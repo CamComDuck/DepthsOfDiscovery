@@ -68,10 +68,11 @@ func onSceneChanged(newScenePath : String) -> void:
 		vision_polygon.hide()
 		
 	elif currentScene is WinGame:
-		submarine.global_position = Vector2(0,0)
+		submarine.global_position = Vector2(-441,222)
 		background.hide()
 		submarine.toggleShipScanner(false)
 		vision_polygon.hide()
+		subCamera.enabled = false
 	
 	await fade_in.finished
 	currentScenePath = newScenePath
