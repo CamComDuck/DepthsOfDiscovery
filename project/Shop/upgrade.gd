@@ -1,6 +1,8 @@
 class_name Upgrade
 extends HBoxContainer
 
+signal onUpgradePurchased (upgradePurchased : UpgradeType)
+
 @export var upgradeType : UpgradeType
 
 var descriptionLabel : Label
@@ -24,9 +26,24 @@ func _ready() -> void:
 				elif get_child(i).get_child(0).get_child(0).get_child(j).name == "UpgradeCost" and get_child(i).get_child(0).get_child(0).get_child(j) is Label:
 					upgradeCost = get_child(i).get_child(0).get_child(0).get_child(j)
 					
+	updateVisual()
+
+func updateVisual() -> void:
 	descriptionLabel.text = upgradeType.name
 	levelLabel.text = "LVL" + str(Currency.upgradeLevels[upgradeType] + 1)
 	levelBar.max_value = upgradeType.maxLevel - 1
 	levelBar.value = Currency.upgradeLevels[upgradeType]
-	#upgradeIcon.texture = upgradeType.fishCost[Currency.upgradeLevels[upgradeType]].sprite
+	upgradeIcon.texture = upgradeType.fishCost[Currency.upgradeLevels[upgradeType]].sprite
 	upgradeCost.text = str(upgradeType.fishCount[Currency.upgradeLevels[upgradeType]])
+
+
+func _on_upgrade_button_pressed() -> void:
+	var fishTypeNeeded : FishType = upgradeType.fishCost[Currency.upgradeLevels[upgradeType]]
+	var fishCountNeeded : int = upgradeType.fishCount[Currency.upgradeLevels[upgradeType]]
+	var currentFishTypeCount : int = Currency.fishCollectedCount[fishTypeNeeded]
+	
+	if currentFishTypeCount >= fishCountNeeded:
+		Currency.upgradeLevels[upgradeType] += 1
+		Currency.fishCollectedCount[fishTypeNeeded] -= fishCountNeeded
+		updateVisual()
+	onUpgradePurchased.emit(upgradeType)

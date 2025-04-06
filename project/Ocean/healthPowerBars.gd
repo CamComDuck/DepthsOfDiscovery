@@ -1,5 +1,5 @@
 class_name HealthPowerBars
-extends HBoxContainer
+extends PanelContainer
 
 @onready var healthBar := %HealthBar as ProgressBar
 @onready var powerBar := %PowerBar as ProgressBar

@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://c5dfsjr53w8i3"]
+[gd_scene load_steps=6 format=3 uid="uid://c5dfsjr53w8i3"]
 
 [ext_resource type="Script" path="res://Win/win_game.gd" id="1_fh626"]
 [ext_resource type="Texture2D" uid="uid://7gcbigt1ipnu" path="res://World/background/background.png" id="2_cu06u"]
-[ext_resource type="Texture2D" uid="uid://dcis8xdp4sbdx" path="res://Submarine/Submarine.png" id="3_qcsjw"]
 [ext_resource type="Texture2D" uid="uid://cjydm67gt0gvw" path="res://Fish/Anglerfish.png" id="4_q28mu"]
 [ext_resource type="Texture2D" uid="uid://c4xki80awtlme" path="res://Fish/Goldfish.png" id="5_nuv8h"]
 [ext_resource type="Texture2D" uid="uid://clfavvf17jpvr" path="res://Fish/Squid.png" id="6_yj8ab"]
@@ -48,11 +47,6 @@ offset_right = 213.0
 offset_bottom = 293.0
 theme_override_font_sizes/font_size = 80
 text = "Main Menu"
-
-[node name="SpriteSubmarine" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(-441, 222)
-texture = ExtResource("3_qcsjw")
 
 [node name="SpriteFish1" type="Sprite2D" parent="."]
 position = Vector2(550, 262)

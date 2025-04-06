@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://7gcbigt1ipnu" path="res://World/background/background.png" id="11_vdq4s"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_76dbx"]
+bg_color = Color(0, 0, 0, 0.470588)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_smlha"]
 bg_color = Color(0.582593, 0.395058, 0.2554, 1)
@@ -94,10 +95,11 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 size_flags_horizontal = 3
 tab_alignment = 1
-current_tab = 0
+current_tab = 2
 clip_tabs = false
 
 [node name="Power" type="PanelContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -581,13 +583,13 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 0.3
 
 [node name="Spacer2" type="Control" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.3
 
 [node name="Vision" type="PanelContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
@@ -602,7 +604,7 @@ custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 45
-text = "Increase your vision to see more fish and dangers"
+text = "Increase your vision to see more fish"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -700,6 +702,7 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 0.3
 
 [node name="FishVision" type="PanelContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer"]
+visible = false
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_smlha")
 
@@ -786,6 +789,7 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 0.3
 
 [node name="DangerVision" type="PanelContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer"]
+visible = false
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_smlha")
 
@@ -866,6 +870,7 @@ layout_mode = 2
 text = "1"
 
 [node name="Spacer2" type="Control" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -914,7 +919,24 @@ offset_right = 640.0
 offset_bottom = 360.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("11_vdq4s")
 metadata/_edit_use_anchors_ = true
 
+[connection signal="onUpgradePurchased" from="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/Battery/MarginContainer/Battery" to="." method="_on_upgrade_purchased"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/Battery/MarginContainer/Battery/UpgradeButton" to="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/Battery/MarginContainer/Battery" method="_on_upgrade_button_pressed"]
+[connection signal="onUpgradePurchased" from="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/VSpeed/MarginContainer/VSpeed" to="." method="_on_upgrade_purchased"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/VSpeed/MarginContainer/VSpeed/UpgradeButton" to="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/VSpeed/MarginContainer/VSpeed" method="_on_upgrade_button_pressed"]
+[connection signal="onUpgradePurchased" from="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/HSpeed/MarginContainer/HSpeed" to="." method="_on_upgrade_purchased"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/HSpeed/MarginContainer/HSpeed/UpgradeButton" to="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/HSpeed/MarginContainer/HSpeed" method="_on_upgrade_button_pressed"]
+[connection signal="onUpgradePurchased" from="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/MaxHealth/MarginContainer/MaxHealth" to="." method="_on_upgrade_purchased"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/MaxHealth/MarginContainer/MaxHealth/UpgradeButton" to="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/MaxHealth/MarginContainer/MaxHealth" method="_on_upgrade_button_pressed"]
+[connection signal="onUpgradePurchased" from="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/HealthRegen/MarginContainer/HealthRegen" to="." method="_on_upgrade_purchased"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/HealthRegen/MarginContainer/HealthRegen/UpgradeButton" to="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/HealthRegen/MarginContainer/HealthRegen" method="_on_upgrade_button_pressed"]
+[connection signal="onUpgradePurchased" from="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/MaxVision/MarginContainer/MaxVision" to="." method="_on_upgrade_purchased"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/MaxVision/MarginContainer/MaxVision/UpgradeButton" to="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/MaxVision/MarginContainer/MaxVision" method="_on_upgrade_button_pressed"]
+[connection signal="onUpgradePurchased" from="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/FishVision/MarginContainer/FishVision" to="." method="_on_upgrade_purchased"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/FishVision/MarginContainer/FishVision/UpgradeButton" to="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/FishVision/MarginContainer/FishVision" method="_on_upgrade_button_pressed"]
+[connection signal="onUpgradePurchased" from="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/DangerVision/MarginContainer/DangerVision" to="." method="_on_upgrade_purchased"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/DangerVision/MarginContainer/DangerVision/UpgradeButton" to="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/DangerVision/MarginContainer/DangerVision" method="_on_upgrade_button_pressed"]
 [connection signal="pressed" from="DiveButton" to="." method="_on_dive_button_pressed"]

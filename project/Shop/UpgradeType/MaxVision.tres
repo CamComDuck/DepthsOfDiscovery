@@ -1,12 +1,15 @@
-[gd_resource type="Resource" script_class="UpgradeType" load_steps=3 format=3 uid="uid://bunwi77dxdi7g"]
+[gd_resource type="Resource" script_class="UpgradeType" load_steps=6 format=3 uid="uid://bunwi77dxdi7g"]
 
 [ext_resource type="Script" path="res://Fish/FishType/FishType.gd" id="1_m63q5"]
+[ext_resource type="Resource" uid="uid://b8k4roh8u3k3t" path="res://Fish/FishType/Goldfish.tres" id="2_wkjv5"]
 [ext_resource type="Script" path="res://Shop/UpgradeType/upgradeType.gd" id="3_osm4g"]
+[ext_resource type="Resource" uid="uid://cajo2b5h5qga0" path="res://Fish/FishType/Squid.tres" id="3_viqda"]
+[ext_resource type="Resource" uid="uid://2oeawdd2aygx" path="res://Fish/FishType/Anglerfish.tres" id="4_55dde"]
 
 [resource]
 script = ExtResource("3_osm4g")
-name = "Vertical Speed"
+name = "Max Vision"
 maxLevel = 5
-fishCost = Array[ExtResource("1_m63q5")]([])
-fishCount = Array[int]([1, 2, 3, 4])
+fishCost = Array[ExtResource("1_m63q5")]([ExtResource("2_wkjv5"), ExtResource("3_viqda"), ExtResource("3_viqda"), ExtResource("4_55dde")])
+fishCount = Array[int]([2, 2, 5, 4])
 levelReward = Array[float]([5.0, 10.0, 15.0, 20.0, 25.0])

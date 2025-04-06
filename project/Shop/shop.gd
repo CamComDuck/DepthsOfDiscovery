@@ -41,4 +41,7 @@ func fixFishPanel() -> void:
 
 func _on_dive_button_pressed() -> void:
 	onSceneChanged.emit("res://Ocean/Ocean.tscn")
-	
+
+
+func _on_upgrade_purchased(upgradePurchased: UpgradeType) -> void:
+	print(upgradePurchased.name + " " + str(Currency.upgradeLevels[upgradePurchased]))

@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="UpgradeType" load_steps=3 format=3 uid="uid://dp63s42vn1s6v"]
+[gd_resource type="Resource" script_class="UpgradeType" load_steps=5 format=3 uid="uid://dp63s42vn1s6v"]
 
 [ext_resource type="Script" path="res://Fish/FishType/FishType.gd" id="1_mqex5"]
 [ext_resource type="Script" path="res://Shop/UpgradeType/upgradeType.gd" id="2_d20x5"]
+[ext_resource type="Resource" uid="uid://b8k4roh8u3k3t" path="res://Fish/FishType/Goldfish.tres" id="2_t44m0"]
+[ext_resource type="Resource" uid="uid://cajo2b5h5qga0" path="res://Fish/FishType/Squid.tres" id="3_kwaw8"]
 
 [resource]
 script = ExtResource("2_d20x5")
 name = "Vertical Speed"
 maxLevel = 5
-fishCost = Array[ExtResource("1_mqex5")]([])
-fishCount = Array[int]([1, 2, 3, 4])
+fishCost = Array[ExtResource("1_mqex5")]([ExtResource("2_t44m0"), ExtResource("2_t44m0"), ExtResource("3_kwaw8"), ExtResource("3_kwaw8")])
+fishCount = Array[int]([4, 6, 4, 6])
 levelReward = Array[float]([5.0, 10.0, 15.0, 20.0, 25.0])

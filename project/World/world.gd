@@ -57,7 +57,7 @@ func onSceneChanged(newScenePath : String) -> void:
 		submarine.allowMovement = true
 		submarine.toggleShipScanner(true)
 		subCamera.enabled = true
-		#vision_polygon.show()
+		vision_polygon.show()
 		
 	elif currentScene is Shop:
 		submarine.global_position = currentScene.getReferenceCenter()

@@ -1,12 +1,15 @@
-[gd_resource type="Resource" script_class="UpgradeType" load_steps=3 format=3 uid="uid://b5olwl81eroa5"]
+[gd_resource type="Resource" script_class="UpgradeType" load_steps=6 format=3 uid="uid://b5olwl81eroa5"]
 
 [ext_resource type="Script" path="res://Fish/FishType/FishType.gd" id="1_ooep4"]
+[ext_resource type="Resource" uid="uid://b8k4roh8u3k3t" path="res://Fish/FishType/Goldfish.tres" id="2_taljw"]
 [ext_resource type="Script" path="res://Shop/UpgradeType/upgradeType.gd" id="3_7svh4"]
+[ext_resource type="Resource" uid="uid://cajo2b5h5qga0" path="res://Fish/FishType/Squid.tres" id="3_qy2ml"]
+[ext_resource type="Resource" uid="uid://2oeawdd2aygx" path="res://Fish/FishType/Anglerfish.tres" id="4_sxrws"]
 
 [resource]
 script = ExtResource("3_7svh4")
 name = "Health Regen"
 maxLevel = 5
-fishCost = Array[ExtResource("1_ooep4")]([])
-fishCount = Array[int]([1, 2, 3, 4])
+fishCost = Array[ExtResource("1_ooep4")]([ExtResource("2_taljw"), ExtResource("3_qy2ml"), ExtResource("3_qy2ml"), ExtResource("4_sxrws")])
+fishCount = Array[int]([5, 4, 6, 3])
 levelReward = Array[float]([5.0, 10.0, 15.0, 20.0, 25.0])
