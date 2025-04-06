@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FishType" load_steps=3 format=3 uid="uid://cajo2b5h5qga0"]
+
+[ext_resource type="Script" path="res://Fish/FishType/FishType.gd" id="1_nmqed"]
+[ext_resource type="Texture2D" uid="uid://clfavvf17jpvr" path="res://Fish/Squid.png" id="2_m1gcu"]
+
+[resource]
+script = ExtResource("1_nmqed")
+name = "Squid"
+sprite = ExtResource("2_m1gcu")
+visionLevel = 2

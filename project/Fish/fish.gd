@@ -1,4 +1,4 @@
-@icon("res://Fish/TEMP_fish_pink.png")
+@icon("res://Fish/Anglerfish.png")
 class_name Fish
 extends CharacterBody2D
 

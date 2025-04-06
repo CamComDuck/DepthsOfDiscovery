@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dn3a7owc8xjkh"
-path="res://.godot/imported/TEMP_fish_purple.png-8ae34469745931ee33bc75df320ddac6.ctex"
+uid="uid://b5w0d2byrucha"
+path="res://.godot/imported/SubmarineSquare.png-e1ff064e6d22c381e244dfafd7844237.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Fish/TEMP_fish_purple.png"
-dest_files=["res://.godot/imported/TEMP_fish_purple.png-8ae34469745931ee33bc75df320ddac6.ctex"]
+source_file="res://Submarine/SubmarineSquare.png"
+dest_files=["res://.godot/imported/SubmarineSquare.png-e1ff064e6d22c381e244dfafd7844237.ctex"]
 
 [params]
 

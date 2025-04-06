@@ -10,6 +10,7 @@ var currentScene : Map
 @onready var submarine := %Submarine as Submarine
 @onready var background := %Background as ColorRect
 @onready var subCamera := %SubCamera as Camera2D
+@onready var vision_polygon := %VisionPolygon as Polygon2D
 
 func _ready() -> void:
 	if Currency.fishCollectedCount.is_empty():
@@ -56,6 +57,7 @@ func onSceneChanged(newScenePath : String) -> void:
 		submarine.allowMovement = true
 		submarine.toggleShipScanner(true)
 		subCamera.enabled = true
+		#vision_polygon.show()
 		
 	elif currentScene is Shop:
 		submarine.global_position = currentScene.getReferenceCenter()
@@ -63,11 +65,13 @@ func onSceneChanged(newScenePath : String) -> void:
 		submarine.allowMovement = false
 		submarine.toggleShipScanner(false)
 		subCamera.enabled = false
+		vision_polygon.hide()
 		
 	elif currentScene is WinGame:
 		submarine.global_position = Vector2(0,0)
 		background.hide()
 		submarine.toggleShipScanner(false)
+		vision_polygon.hide()
 	
 	await fade_in.finished
 	currentScenePath = newScenePath

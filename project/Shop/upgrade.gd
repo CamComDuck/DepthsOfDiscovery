@@ -28,5 +28,5 @@ func _ready() -> void:
 	levelLabel.text = "LVL" + str(Currency.upgradeLevels[upgradeType] + 1)
 	levelBar.max_value = upgradeType.maxLevel - 1
 	levelBar.value = Currency.upgradeLevels[upgradeType]
-	upgradeIcon.texture = upgradeType.fishCost[Currency.upgradeLevels[upgradeType]].sprite
+	#upgradeIcon.texture = upgradeType.fishCost[Currency.upgradeLevels[upgradeType]].sprite
 	upgradeCost.text = str(upgradeType.fishCount[Currency.upgradeLevels[upgradeType]])

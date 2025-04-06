@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FishType" load_steps=3 format=3 uid="uid://2oeawdd2aygx"]
+
+[ext_resource type="Script" path="res://Fish/FishType/FishType.gd" id="1_jiwiy"]
+[ext_resource type="Texture2D" uid="uid://cjydm67gt0gvw" path="res://Fish/Anglerfish.png" id="2_mieuo"]
+
+[resource]
+script = ExtResource("1_jiwiy")
+name = "Anglerfish"
+sprite = ExtResource("2_mieuo")
+visionLevel = 3

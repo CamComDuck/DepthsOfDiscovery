@@ -4,7 +4,6 @@
 [ext_resource type="Script" path="res://Shop/upgrade.gd" id="2_1q6i1"]
 [ext_resource type="Resource" uid="uid://w7btxuhlww3j" path="res://Shop/UpgradeType/Battery.tres" id="3_514ql"]
 [ext_resource type="Resource" uid="uid://dp63s42vn1s6v" path="res://Shop/UpgradeType/VSpeed.tres" id="3_dleh4"]
-[ext_resource type="Texture2D" uid="uid://d4b530cifxmvp" path="res://Fish/TEMP_fish_blue.png" id="5_oh26v"]
 [ext_resource type="Resource" uid="uid://bjl3jpb3nj6ad" path="res://Shop/UpgradeType/HSpeed.tres" id="6_bve64"]
 [ext_resource type="Resource" uid="uid://ch2km3n3vyguw" path="res://Shop/UpgradeType/MaxHealth.tres" id="7_kfcee"]
 [ext_resource type="Resource" uid="uid://b5olwl81eroa5" path="res://Shop/UpgradeType/HealthRegen.tres" id="8_ufgib"]
@@ -19,6 +18,8 @@ bg_color = Color(0.582593, 0.395058, 0.2554, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rkfnf"]
 bg_color = Color(0.822064, 0.465632, 0.657747, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fwtnx"]
 
 [node name="Shop" type="Node2D"]
 script = ExtResource("1_rncua")
@@ -194,7 +195,7 @@ text = "UPGRADE"
 
 [node name="UpgradeSprite" type="TextureRect" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/Battery/MarginContainer/Battery/UpgradeButton/MarginContainer/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("5_oh26v")
+texture = SubResource("CompressedTexture2D_fwtnx")
 expand_mode = 3
 
 [node name="UpgradeCost" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/Battery/MarginContainer/Battery/UpgradeButton/MarginContainer/HBoxContainer"]
@@ -280,7 +281,7 @@ text = "UPGRADE"
 
 [node name="UpgradeSprite" type="TextureRect" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/VSpeed/MarginContainer/VSpeed/UpgradeButton/MarginContainer/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("5_oh26v")
+texture = SubResource("CompressedTexture2D_fwtnx")
 expand_mode = 3
 
 [node name="UpgradeCost" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/VSpeed/MarginContainer/VSpeed/UpgradeButton/MarginContainer/HBoxContainer"]
@@ -366,7 +367,7 @@ text = "UPGRADE"
 
 [node name="UpgradeSprite" type="TextureRect" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/HSpeed/MarginContainer/HSpeed/UpgradeButton/MarginContainer/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("5_oh26v")
+texture = SubResource("CompressedTexture2D_fwtnx")
 expand_mode = 3
 
 [node name="UpgradeCost" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/HSpeed/MarginContainer/HSpeed/UpgradeButton/MarginContainer/HBoxContainer"]
@@ -479,7 +480,7 @@ text = "UPGRADE"
 
 [node name="UpgradeSprite" type="TextureRect" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/MaxHealth/MarginContainer/MaxHealth/UpgradeButton/MarginContainer/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("5_oh26v")
+texture = SubResource("CompressedTexture2D_fwtnx")
 expand_mode = 3
 
 [node name="UpgradeCost" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/MaxHealth/MarginContainer/MaxHealth/UpgradeButton/MarginContainer/HBoxContainer"]
@@ -565,7 +566,7 @@ text = "UPGRADE"
 
 [node name="UpgradeSprite" type="TextureRect" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/HealthRegen/MarginContainer/HealthRegen/UpgradeButton/MarginContainer/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("5_oh26v")
+texture = SubResource("CompressedTexture2D_fwtnx")
 expand_mode = 3
 
 [node name="UpgradeCost" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Health/MarginContainer/HealthContainer/HealthRegen/MarginContainer/HealthRegen/UpgradeButton/MarginContainer/HBoxContainer"]
@@ -684,7 +685,7 @@ text = "UPGRADE"
 
 [node name="UpgradeSprite" type="TextureRect" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/MaxVision/MarginContainer/MaxVision/UpgradeButton/MarginContainer/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("5_oh26v")
+texture = SubResource("CompressedTexture2D_fwtnx")
 expand_mode = 3
 
 [node name="UpgradeCost" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/MaxVision/MarginContainer/MaxVision/UpgradeButton/MarginContainer/HBoxContainer"]
@@ -770,7 +771,7 @@ text = "UPGRADE"
 
 [node name="UpgradeSprite" type="TextureRect" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/FishVision/MarginContainer/FishVision/UpgradeButton/MarginContainer/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("5_oh26v")
+texture = SubResource("CompressedTexture2D_fwtnx")
 expand_mode = 3
 
 [node name="UpgradeCost" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/FishVision/MarginContainer/FishVision/UpgradeButton/MarginContainer/HBoxContainer"]
@@ -856,7 +857,7 @@ text = "UPGRADE"
 
 [node name="UpgradeSprite" type="TextureRect" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/DangerVision/MarginContainer/DangerVision/UpgradeButton/MarginContainer/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("5_oh26v")
+texture = SubResource("CompressedTexture2D_fwtnx")
 expand_mode = 3
 
 [node name="UpgradeCost" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Vision/MarginContainer/VisionContainer/DangerVision/MarginContainer/DangerVision/UpgradeButton/MarginContainer/HBoxContainer"]

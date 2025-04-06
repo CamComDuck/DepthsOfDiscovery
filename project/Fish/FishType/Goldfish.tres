@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FishType" load_steps=3 format=3 uid="uid://b8k4roh8u3k3t"]
+
+[ext_resource type="Script" path="res://Fish/FishType/FishType.gd" id="1_nmvu3"]
+[ext_resource type="Texture2D" uid="uid://c4xki80awtlme" path="res://Fish/Goldfish.png" id="2_21bn1"]
+
+[resource]
+script = ExtResource("1_nmvu3")
+name = "Goldfish"
+sprite = ExtResource("2_21bn1")
+visionLevel = 1

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://c4cubchmmegrr"]
 
 [ext_resource type="Script" path="res://Submarine/submarine.gd" id="1_ypxf4"]
-[ext_resource type="Texture2D" uid="uid://pb1snut8jrot" path="res://Submarine/TEMP_submarine.png" id="2_k5ivo"]
+[ext_resource type="Texture2D" uid="uid://dcis8xdp4sbdx" path="res://Submarine/Submarine.png" id="2_ejyc3"]
 [ext_resource type="Texture2D" uid="uid://v071l6euey4n" path="res://Submarine/TEMP_scanner.png" id="3_c6mqd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_17lp6"]
@@ -20,10 +20,12 @@ floor_constant_speed = true
 script = ExtResource("1_ypxf4")
 
 [node name="SpriteSubmarine" type="Sprite2D" parent="."]
-texture = ExtResource("2_k5ivo")
+unique_name_in_owner = true
+texture = ExtResource("2_ejyc3")
 
 [node name="SpriteScanner" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0.352941)
 z_index = 9
 z_as_relative = false
 texture = ExtResource("3_c6mqd")

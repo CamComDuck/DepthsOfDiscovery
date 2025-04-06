@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://Ocean/fishPanel.gd" id="1_bb7js"]
 
 [node name="FishPanel" type="PanelContainer"]
-offset_left = 389.0
-offset_top = 301.0
-offset_right = 617.0
-offset_bottom = 336.0
+offset_left = 340.0
+offset_top = 325.0
+offset_right = 616.0
+offset_bottom = 390.0
 script = ExtResource("1_bb7js")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

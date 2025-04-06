@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="FishType" load_steps=3 format=3 uid="uid://b006g2ylwuv0t"]
-
-[ext_resource type="Script" path="res://Fish/FishType/FishType.gd" id="1_mfj6u"]
-[ext_resource type="Texture2D" uid="uid://d4b530cifxmvp" path="res://Fish/TEMP_fish_blue.png" id="2_t2odv"]
-
-[resource]
-script = ExtResource("1_mfj6u")
-name = "Blue Fish"
-sprite = ExtResource("2_t2odv")

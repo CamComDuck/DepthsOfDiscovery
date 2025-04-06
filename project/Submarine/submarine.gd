@@ -1,4 +1,4 @@
-@icon("res://Submarine/TEMP_submarine.png")
+@icon("res://Submarine/Submarine.png")
 class_name Submarine
 extends CharacterBody2D
 
@@ -19,6 +19,7 @@ var healthHit := 15.0
 @onready var scannerCast := %ScannerCast as ShapeCast2D
 @onready var shipCast := %ShipCast as ShapeCast2D
 @onready var scannerSprite := %SpriteScanner as Sprite2D
+@onready var submarineSprite := %SpriteSubmarine as Sprite2D
 
 
 func _physics_process(delta: float) -> void:
@@ -35,6 +36,11 @@ func handle_movement(delta: float) -> void:
 
 
 	var direction := Input.get_axis("move_left", "move_right")
+	if direction > 0:
+		submarineSprite.flip_h = false
+	elif direction < 0:
+		submarineSprite.flip_h = true
+		
 	if allowMovement:
 		if direction != 0:
 			velocity.x = direction * MOVE_SPEED
