@@ -18,3 +18,8 @@ texture = ExtResource("2_vhmp7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_8xdsy")
+
+[node name="SwimTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[connection signal="timeout" from="SwimTimer" to="." method="_on_swim_timer_timeout"]
