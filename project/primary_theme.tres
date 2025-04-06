@@ -1,9 +1,21 @@
-[gd_resource type="Theme" load_steps=6 format=3 uid="uid://cn1usk00ydjpb"]
+[gd_resource type="Theme" load_steps=13 format=3 uid="uid://cn1usk00ydjpb"]
 
 [ext_resource type="FontFile" uid="uid://bv75ergonc71w" path="res://VT323-Regular.ttf" id="1_8g3rc"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f77rk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xopyn"]
+bg_color = Color(0.667698, 0.461072, 0.306201, 1)
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wfqj1"]
-bg_color = Color(0.771451, 0.555987, 0.145611, 1)
+bg_color = Color(0.723055, 0.506784, 0.346408, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kkcjq"]
+bg_color = Color(0.557236, 0.37838, 0.23982, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eeytk"]
 bg_color = Color(0.763424, 0.546534, 0.384983, 1)
@@ -13,11 +25,41 @@ bg_color = Color(0.314316, 0.314316, 0.314316, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t5b22"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j2hqd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a4mhy"]
+bg_color = Color(0.584314, 0.396078, 0.254902, 1)
+border_width_left = 20
+border_width_right = 20
+border_color = Color(0.8, 0.8, 0.8, 0)
+expand_margin_left = 10.0
+expand_margin_top = 5.0
+expand_margin_right = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vkluc"]
+bg_color = Color(0.866667, 0.670588, 0.529412, 1)
+border_width_left = 20
+border_width_right = 20
+border_color = Color(0.8, 0.8, 0.8, 0)
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0lvwc"]
+bg_color = Color(0.309065, 0.198082, 0.114165, 1)
+border_width_left = 20
+border_width_right = 20
+border_color = Color(0.545098, 0.545098, 0.545098, 0)
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+
 [resource]
 Button/constants/outline_size = 2
 Button/font_sizes/font_size = 30
 Button/fonts/font = ExtResource("1_8g3rc")
+Button/styles/focus = SubResource("StyleBoxEmpty_f77rk")
+Button/styles/hover = SubResource("StyleBoxFlat_xopyn")
 Button/styles/normal = SubResource("StyleBoxFlat_wfqj1")
+Button/styles/pressed = SubResource("StyleBoxFlat_kkcjq")
 HBoxContainer/constants/separation = 5
 Label/constants/outline_size = 2
 Label/font_sizes/font_size = 25
@@ -32,8 +74,11 @@ ProgressBar/font_sizes/font_size = 24
 ProgressBar/fonts/font = ExtResource("1_8g3rc")
 ProgressBar/styles/background = SubResource("StyleBoxFlat_yr6ac")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_t5b22")
-TabBar/constants/h_separation = 8
 TabContainer/constants/outline_size = 2
-TabContainer/font_sizes/font_size = 56
+TabContainer/font_sizes/font_size = 58
 TabContainer/fonts/font = ExtResource("1_8g3rc")
+TabContainer/styles/tab_focus = SubResource("StyleBoxEmpty_j2hqd")
+TabContainer/styles/tab_hovered = SubResource("StyleBoxFlat_a4mhy")
+TabContainer/styles/tab_selected = SubResource("StyleBoxFlat_vkluc")
+TabContainer/styles/tab_unselected = SubResource("StyleBoxFlat_0lvwc")
 VBoxContainer/constants/separation = 5

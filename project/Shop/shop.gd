@@ -25,6 +25,7 @@ func _ready() -> void:
 					fishPanelPosition = fishPanel.position
 					fishPanelSize = fishPanel.size
 					fishPanel.reparent(fish_panel_parent)
+					fishPanel.self_modulate = Color.TRANSPARENT
 
 
 func getReferenceCenter() -> Vector2:
@@ -35,6 +36,7 @@ func fixFishPanel() -> void:
 	fishPanel.reparent(submarine)
 	fishPanel.size = fishPanelSize
 	fishPanel.position = fishPanelPosition
+	fishPanel.self_modulate = Color.WHITE
 
 
 func _on_dive_button_pressed() -> void:
