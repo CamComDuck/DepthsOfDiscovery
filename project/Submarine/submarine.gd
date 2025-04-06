@@ -9,7 +9,7 @@ const MOVE_SPEED = 150.0
 const SCAN_SPEED = 50.0
 
 var allowMovement := false
-var bestDiveDepth : float
+var bestDiveDepth := 0.0
 
 # Ship Stats:
 var maxHealth := 100.0

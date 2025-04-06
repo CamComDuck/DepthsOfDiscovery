@@ -17,6 +17,22 @@ autostart = true
 unique_name_in_owner = true
 wait_time = 5.0
 
+[node name="LinePB" type="Line2D" parent="."]
+unique_name_in_owner = true
+z_index = 9
+z_as_relative = false
+points = PackedVector2Array(-10000, 0, 10000, 0)
+width = 5.0
+default_color = Color(0, 0.662728, 1.54018e-06, 1)
+
+[node name="LineWin" type="Line2D" parent="."]
+unique_name_in_owner = true
+z_index = 9
+z_as_relative = false
+points = PackedVector2Array(-10000, 0, 10000, 0)
+width = 5.0
+default_color = Color(1, 0.692329, 0.225039, 1)
+
 [connection signal="timeout" from="FishSpawnTimer" to="." method="_on_fish_spawn_timer_timeout"]
 [connection signal="timeout" from="PowerDrainTimer" to="." method="_on_power_drain_timer_timeout"]
 [connection signal="timeout" from="HealthRegenTimer" to="." method="_on_health_regen_timer_timeout"]

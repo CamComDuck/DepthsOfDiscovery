@@ -19,6 +19,8 @@ var diveEnded := false
 @onready var fish_spawn_timer := %FishSpawnTimer as Timer
 @onready var power_drain_timer := %PowerDrainTimer as Timer
 @onready var health_regen_timer := %HealthRegenTimer as Timer
+@onready var line_pb := %LinePB as Line2D
+@onready var line_win := %LineWin as Line2D
 
 func _ready() -> void:
 	for i in get_parent().get_child_count():
@@ -42,6 +44,15 @@ func _ready() -> void:
 					visiblePolygon = submarine.get_child(j) as Polygon2D
 					visiblePolygon.polygon = submarine.maxVision
 			
+	line_win.points[0].y = maxDepthY
+	line_win.points[1].y = maxDepthY
+	depthBar.setBestDive((submarine.bestDiveDepth / maxDepthY) * -1)
+	if submarine.bestDiveDepth != 0:
+		line_pb.points[0].y = submarine.bestDiveDepth
+		line_pb.points[1].y = submarine.bestDiveDepth
+	else:
+		line_pb.hide()
+			
 	powerLevel = submarine.maxPower
 	healthLevel = submarine.maxHealth
 	healthPowerBars.setMaxHealth(healthLevel)
@@ -60,6 +71,9 @@ func _physics_process(_delta: float) -> void:
 		if depthPercent >= 1: # Win
 			submarine.allowMovement = false
 			checkDiveEnded(true)
+		
+		if submarine.global_position.y > submarine.bestDiveDepth:
+			submarine.bestDiveDepth = submarine.global_position.y
 
 
 func checkDiveEnded(isWin : bool) -> void:
@@ -81,8 +95,6 @@ func checkDiveEnded(isWin : bool) -> void:
 		onSceneChanged.emit("res://Shop/Shop.tscn")
 	else:
 		onSceneChanged.emit("res://Win/winGame.tscn")
-	
-
 
 func onHealthHit(minusHealth : float) -> void:
 	if not diveEnded:

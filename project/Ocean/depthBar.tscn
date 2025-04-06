@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://c16e1oe14midy" path="res://Ocean/depthBar.png" id="2_38msq"]
 
 [node name="DepthBar" type="TextureProgressBar"]
+z_index = 50
+z_as_relative = false
 offset_left = -620.58
 offset_top = -100.0
 offset_right = -570.58
@@ -16,3 +18,17 @@ fill_mode = 2
 texture_under = ExtResource("1_ncm07")
 texture_progress = ExtResource("2_38msq")
 script = ExtResource("1_whe08")
+
+[node name="Line2D" type="Line2D" parent="."]
+z_index = 1
+points = PackedVector2Array(0, 0, 50, 0)
+width = 2.0
+default_color = Color(0, 0.662745, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 50.58
+offset_top = -13.0
+offset_right = 140.58
+offset_bottom = 12.0
+text = "BEST DIVE"
