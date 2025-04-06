@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://e2w67wdwneby"]
+[gd_scene load_steps=16 format=3 uid="uid://e2w67wdwneby"]
 
 [ext_resource type="Script" path="res://Shop/shop.gd" id="1_rncua"]
 [ext_resource type="Script" path="res://Shop/upgrade.gd" id="2_1q6i1"]
@@ -10,6 +10,7 @@
 [ext_resource type="Resource" uid="uid://bunwi77dxdi7g" path="res://Shop/UpgradeType/MaxVision.tres" id="9_k0hop"]
 [ext_resource type="Resource" uid="uid://cxnvtastfq53d" path="res://Shop/UpgradeType/FishVision.tres" id="10_h4ln6"]
 [ext_resource type="Resource" uid="uid://45fd2a6d6n05" path="res://Shop/UpgradeType/DangerVision.tres" id="11_u8dxb"]
+[ext_resource type="Texture2D" uid="uid://7gcbigt1ipnu" path="res://World/background/background.png" id="11_vdq4s"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_76dbx"]
 
@@ -886,7 +887,7 @@ theme_override_constants/margin_bottom = 5
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
-text = "Submarine Name -- 10 Dives"
+text = "My Submarine -- 10 Dives"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -897,5 +898,23 @@ offset_right = 579.0
 offset_bottom = -259.0
 theme_override_font_sizes/font_size = 50
 text = "Dive!"
+
+[node name="Background" type="TextureRect" parent="."]
+unique_name_in_owner = true
+z_index = -100
+z_as_relative = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -360.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_vdq4s")
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="DiveButton" to="." method="_on_dive_button_pressed"]

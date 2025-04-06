@@ -8,7 +8,7 @@ var currentScenePath : String
 var currentScene : Map
 
 @onready var submarine := %Submarine as Submarine
-@onready var background := %Background as ColorRect
+@onready var background := %Background as TextureRect
 @onready var subCamera := %SubCamera as Camera2D
 @onready var vision_polygon := %VisionPolygon as Polygon2D
 

@@ -81,4 +81,5 @@ TabContainer/styles/tab_focus = SubResource("StyleBoxEmpty_j2hqd")
 TabContainer/styles/tab_hovered = SubResource("StyleBoxFlat_a4mhy")
 TabContainer/styles/tab_selected = SubResource("StyleBoxFlat_vkluc")
 TabContainer/styles/tab_unselected = SubResource("StyleBoxFlat_0lvwc")
+TextEdit/fonts/font = ExtResource("1_8g3rc")
 VBoxContainer/constants/separation = 5
