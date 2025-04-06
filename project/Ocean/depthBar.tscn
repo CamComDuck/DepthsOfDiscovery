@@ -1,14 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://5mu2n3sbh36c"]
+[gd_scene load_steps=4 format=3 uid="uid://5mu2n3sbh36c"]
 
+[ext_resource type="Texture2D" uid="uid://bk4pi8msquu2b" path="res://Ocean/depthBarUnder.png" id="1_ncm07"]
 [ext_resource type="Script" path="res://Ocean/depthBar.gd" id="1_whe08"]
+[ext_resource type="Texture2D" uid="uid://c16e1oe14midy" path="res://Ocean/depthBar.png" id="2_38msq"]
 
-[node name="DepthBar" type="ProgressBar"]
+[node name="DepthBar" type="TextureProgressBar"]
 offset_left = -620.58
 offset_top = -100.0
 offset_right = -570.58
 offset_bottom = 100.0
 max_value = 1.0
-value = 1.0
-fill_mode = 3
-show_percentage = false
+step = 0.01
+value = 0.5
+fill_mode = 2
+texture_under = ExtResource("1_ncm07")
+texture_progress = ExtResource("2_38msq")
 script = ExtResource("1_whe08")

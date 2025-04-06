@@ -2,7 +2,6 @@
 class_name Submarine
 extends CharacterBody2D
 
-signal onPowerHit (minusPower : float)
 signal onHealthHit (minusHealth : float)
 signal onFishCollected (fishType : FishType)
 
@@ -10,6 +9,7 @@ const MOVE_SPEED = 150.0
 const SCAN_SPEED = 50.0
 
 var allowMovement := false
+var bestDiveDepth : float
 
 # Ship Stats:
 var maxHealth := 100.0
@@ -44,7 +44,6 @@ func handle_movement(delta: float) -> void:
 		velocity += get_gravity() * delta
 		velocity.y = minf(velocity.y, 100 * verticalSpeed)
 
-
 	var direction := Input.get_axis("move_left", "move_right")
 	if direction > 0:
 		submarineSprite.flip_h = false
@@ -69,7 +68,6 @@ func handle_scanner_collisions() -> void:
 		if scannerCast.get_collider(i) is Fish and Input.is_action_just_pressed("collect"):
 			var scannedFish := scannerCast.get_collider(i) as Fish
 			scannedFish.queue_free()
-			onPowerHit.emit(powerHit)
 			onFishCollected.emit(scannedFish.fishType)
 
 

@@ -1,7 +1,7 @@
 class_name Ocean
 extends Map
 
-const maxDepthY := -10000.0
+const maxDepthY := -9000.0
 
 var submarine : Submarine
 var healthPowerBars : HealthPowerBars
@@ -12,7 +12,6 @@ var visiblePolygon : Polygon2D
 var powerLevel : float
 var healthLevel : float
 var diveEnded := false
-var currentDepth := 100.0
 
 @onready var fish := load("res://Fish/fish.tscn") as PackedScene
 @onready var healthPowerBarsScene := load("res://Ocean/healthPowerBars.tscn") as PackedScene
@@ -25,7 +24,6 @@ func _ready() -> void:
 	for i in get_parent().get_child_count():
 		if get_parent().get_child(i) is Submarine:
 			submarine = get_parent().get_child(i) as Submarine
-			submarine.connect("onPowerHit", onPowerHit)
 			submarine.connect("onHealthHit", onHealthHit)
 			submarine.connect("onFishCollected", onFishCollected)
 			
@@ -57,9 +55,9 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	if not diveEnded:
-		var depthPercent := 1 - ((submarine.global_position.y / maxDepthY) * -1)
+		var depthPercent := ((submarine.global_position.y / maxDepthY) * -1)
 		depthBar.setDepth(depthPercent)
-		if depthPercent <= 0: # Win
+		if depthPercent >= 1: # Win
 			submarine.allowMovement = false
 			checkDiveEnded(true)
 
@@ -84,12 +82,6 @@ func checkDiveEnded(isWin : bool) -> void:
 	else:
 		onSceneChanged.emit("res://Win/winGame.tscn")
 	
-	
-func onPowerHit(minusPower : float) -> void:\
-	if not diveEnded:
-		powerLevel -= minusPower
-		healthPowerBars.setPower(powerLevel)
-		checkDiveEnded(false)
 
 
 func onHealthHit(minusHealth : float) -> void:
@@ -110,14 +102,29 @@ func onFishCollected(fishType : FishType) -> void:
 			
 		Currency.fishCollectedCount[fishType] += 1
 		fishPanel.updateFishCounts()
+		powerLevel -= submarine.powerHit
+		healthPowerBars.setPower(powerLevel)
+		checkDiveEnded(false)
 
 
 func _on_fish_spawn_timer_timeout() -> void:
 	if not diveEnded:
 		var newFish := fish.instantiate() as Fish
 		var fishTypes : Array = Currency.fishCollectedCount.keys()
-		#var newFishType : FishType = fishTypes[randi_range(0, fishTypes.size() - 1)]
-		var newFishType : FishType = fishTypes[0]
+		var newFishType : FishType
+		
+		var depthPercent := 1 - ((submarine.global_position.y / maxDepthY) * -1)
+		if depthPercent > 0.8: # Only spawn goldfish
+			newFishType = fishTypes[0]
+		elif depthPercent > 0.6: # Spawn goldfish and squid
+			newFishType = fishTypes[randi_range(0, 1)]
+		elif depthPercent > 0.4: # Only spawn squid
+			newFishType = fishTypes[1]
+		elif depthPercent >= 0.2: # Spawn squid and anglerfish
+			newFishType = fishTypes[randi_range(1, 2)]
+		elif depthPercent < 0.2: # Spawn only anglerfish
+			newFishType = fishTypes[2]
+		
 		newFish.load_type(newFishType)
 		
 		var randX1 := randf_range(submarine.global_position.x - 600, submarine.global_position.x - 350)
