@@ -10,3 +10,11 @@ func setHealth(newHealth : float) -> void:
 	
 func setPower(newPower : float) -> void:
 	powerBar.value = newPower
+
+
+func setMaxHealth(newHealth : float) -> void:
+	healthBar.max_value = newHealth
+	
+
+func setMaxPower(newPower : float) -> void:
+	powerBar.max_value = newPower

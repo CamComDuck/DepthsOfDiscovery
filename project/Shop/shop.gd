@@ -1,6 +1,15 @@
 class_name Shop
 extends Map
 
+@export var batteryUpgrade : UpgradeType
+@export var dangerVisionUpgrade : UpgradeType
+@export var fishVisionUpgrade : UpgradeType
+@export var healthRegenUpgrade : UpgradeType
+@export var hSpeedUpgrade : UpgradeType
+@export var maxHealthUpgrade : UpgradeType
+@export var maxVisionUpgrade : UpgradeType
+@export var vSpeedUpgrade : UpgradeType
+
 var submarine : Submarine
 var fishPanel : FishPanel
 var fishPanelPosition : Vector2
@@ -44,4 +53,29 @@ func _on_dive_button_pressed() -> void:
 
 
 func _on_upgrade_purchased(upgradePurchased: UpgradeType) -> void:
-	print(upgradePurchased.name + " " + str(Currency.upgradeLevels[upgradePurchased]))
+	fishPanel.updateFishCounts()
+	if upgradePurchased == batteryUpgrade:
+		submarine.powerDrain -= 0.5
+		submarine.maxPower += 25
+		submarine.powerHit -= 0.5
+	elif upgradePurchased == dangerVisionUpgrade:
+		pass
+	elif upgradePurchased == fishVisionUpgrade:
+		pass
+	elif upgradePurchased == healthRegenUpgrade:
+		submarine.healthRegen += 5
+
+	elif upgradePurchased == hSpeedUpgrade:
+		submarine.horizontalSpeed += 0.2
+		
+	elif upgradePurchased == maxHealthUpgrade:
+		submarine.maxHealth += 50
+		
+	elif upgradePurchased == maxVisionUpgrade:
+		for i in submarine.maxVision:
+			i.x += 20
+			i.y += 20
+			
+	elif upgradePurchased == vSpeedUpgrade:
+		submarine.verticalSpeed += 0.2
+		

@@ -25,6 +25,14 @@ bg_color = Color(0.822064, 0.465632, 0.657747, 1)
 
 [node name="Shop" type="Node2D"]
 script = ExtResource("1_rncua")
+batteryUpgrade = ExtResource("3_514ql")
+dangerVisionUpgrade = ExtResource("11_u8dxb")
+fishVisionUpgrade = ExtResource("10_h4ln6")
+healthRegenUpgrade = ExtResource("8_ufgib")
+hSpeedUpgrade = ExtResource("6_bve64")
+maxHealthUpgrade = ExtResource("7_kfcee")
+maxVisionUpgrade = ExtResource("9_k0hop")
+vSpeedUpgrade = ExtResource("3_dleh4")
 
 [node name="ShopCamera" type="Camera2D" parent="."]
 
@@ -95,11 +103,10 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 size_flags_horizontal = 3
 tab_alignment = 1
-current_tab = 2
+current_tab = 0
 clip_tabs = false
 
 [node name="Power" type="PanelContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -590,6 +597,7 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 0.3
 
 [node name="Vision" type="PanelContainer" parent="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 

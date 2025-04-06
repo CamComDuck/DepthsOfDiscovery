@@ -12,9 +12,19 @@ const SCAN_SPEED = 50.0
 var allowMovement := false
 
 # Ship Stats:
+var maxHealth := 100.0
+var maxPower := 100.0
+var healthRegen := 0.0
 var powerDrain := 5.0
 var powerHit := 5.0
-var healthHit := 15.0
+var healthHit := 25.0
+var horizontalSpeed := 1.0
+var verticalSpeed := 1.0
+var maxVision : Array[Vector2] = [
+	Vector2(250, -100),
+	Vector2(-250, -100),
+	Vector2(-250, 225),
+	Vector2(250, 225)]
 
 @onready var scannerCast := %ScannerCast as ShapeCast2D
 @onready var shipCast := %ShipCast as ShapeCast2D
@@ -32,7 +42,7 @@ func _physics_process(delta: float) -> void:
 func handle_movement(delta: float) -> void:
 	if not is_on_floor() and allowMovement:
 		velocity += get_gravity() * delta
-		velocity.y = minf(velocity.y, 100)
+		velocity.y = minf(velocity.y, 100 * verticalSpeed)
 
 
 	var direction := Input.get_axis("move_left", "move_right")
@@ -46,8 +56,8 @@ func handle_movement(delta: float) -> void:
 			velocity.x = direction * MOVE_SPEED
 		else:
 			velocity.x = move_toward(velocity.x, 0, (MOVE_SPEED * delta) / 2 )
-		scannerCast.target_position.x = move_toward(scannerCast.target_position.x, direction * 150, SCAN_SPEED * delta * 1.5)
-		scannerSprite.rotation_degrees = move_toward(scannerSprite.rotation_degrees, -1 * direction * 50, (SCAN_SPEED * delta) / 2)
+		scannerCast.target_position.x = move_toward(scannerCast.target_position.x, direction * 150, SCAN_SPEED * delta * 1.5 * horizontalSpeed)
+		scannerSprite.rotation_degrees = move_toward(scannerSprite.rotation_degrees, -1 * direction * 50, ((SCAN_SPEED * delta) / 2) * horizontalSpeed)
 		move_and_slide()
 	else:
 		scannerCast.target_position.x = 0

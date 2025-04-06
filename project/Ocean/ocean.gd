@@ -7,17 +7,19 @@ var submarine : Submarine
 var healthPowerBars : HealthPowerBars
 var depthBar : DepthBar
 var fishPanel : FishPanel
+var visiblePolygon : Polygon2D
 
-var powerLevel := 100.0
-var healthLevel := 100.0
+var powerLevel : float
+var healthLevel : float
 var diveEnded := false
 var currentDepth := 100.0
 
 @onready var fish := load("res://Fish/fish.tscn") as PackedScene
 @onready var healthPowerBarsScene := load("res://Ocean/healthPowerBars.tscn") as PackedScene
 @onready var depthBarScene := load("res://Ocean/depthBar.tscn") as PackedScene
-@onready var fish_spawn_timer: Timer = %FishSpawnTimer
-@onready var power_drain_timer: Timer = %PowerDrainTimer
+@onready var fish_spawn_timer := %FishSpawnTimer as Timer
+@onready var power_drain_timer := %PowerDrainTimer as Timer
+@onready var health_regen_timer := %HealthRegenTimer as Timer
 
 func _ready() -> void:
 	for i in get_parent().get_child_count():
@@ -38,10 +40,19 @@ func _ready() -> void:
 					fishPanel = submarine.get_child(j) as FishPanel
 					if fishPanel.isPanelEmpty():
 						fishPanel.hide()
+				elif submarine.get_child(j) is Polygon2D:
+					visiblePolygon = submarine.get_child(j) as Polygon2D
+					visiblePolygon.polygon = submarine.maxVision
 			
+	powerLevel = submarine.maxPower
+	healthLevel = submarine.maxHealth
+	healthPowerBars.setMaxHealth(healthLevel)
+	healthPowerBars.setMaxPower(powerLevel)
 	healthPowerBars.setPower(powerLevel)
 	healthPowerBars.setHealth(healthLevel)
 	Currency.totalDives += 1
+	if submarine.healthRegen > 0:
+		health_regen_timer.start()
 	
 
 func _physics_process(_delta: float) -> void:
@@ -66,6 +77,7 @@ func checkDiveEnded(isWin : bool) -> void:
 	depthBar.queue_free()
 	fish_spawn_timer.stop()
 	power_drain_timer.stop()
+	health_regen_timer.stop()
 	
 	if not isWin:
 		onSceneChanged.emit("res://Shop/Shop.tscn")
@@ -93,7 +105,8 @@ func onFishCollected(fishType : FishType) -> void:
 			fishPanel.show()
 		
 		if Currency.fishCollectedCount[fishType] == 0:
-			fishPanel.addFishRow(fishType)
+			if not fishPanel.hasFishRow(fishType):
+				fishPanel.addFishRow(fishType)
 			
 		Currency.fishCollectedCount[fishType] += 1
 		fishPanel.updateFishCounts()
@@ -103,7 +116,8 @@ func _on_fish_spawn_timer_timeout() -> void:
 	if not diveEnded:
 		var newFish := fish.instantiate() as Fish
 		var fishTypes : Array = Currency.fishCollectedCount.keys()
-		var newFishType : FishType = fishTypes[randi_range(0, fishTypes.size() - 1)]
+		#var newFishType : FishType = fishTypes[randi_range(0, fishTypes.size() - 1)]
+		var newFishType : FishType = fishTypes[0]
 		newFish.load_type(newFishType)
 		
 		var randX1 := randf_range(submarine.global_position.x - 600, submarine.global_position.x - 350)
@@ -124,3 +138,12 @@ func _on_power_drain_timer_timeout() -> void:
 		powerLevel -= submarine.powerDrain
 		healthPowerBars.setPower(powerLevel)
 		checkDiveEnded(false)
+
+
+func _on_health_regen_timer_timeout() -> void:
+	if not diveEnded:
+		healthLevel += submarine.healthRegen
+		if healthLevel > submarine.maxHealth:
+			healthLevel = submarine.maxHealth
+		healthPowerBars.setHealth(healthLevel)
+		health_regen_timer.start()

@@ -21,3 +21,10 @@ func updateFishCounts() -> void:
 
 func isPanelEmpty() -> bool:
 	return fishRows.is_empty()
+
+
+func hasFishRow(findFishType : FishType) -> bool:
+	for i in fishRows:
+		if i.fishType == findFishType:
+			return true
+	return false

@@ -13,5 +13,10 @@ autostart = true
 unique_name_in_owner = true
 autostart = true
 
+[node name="HealthRegenTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 5.0
+
 [connection signal="timeout" from="FishSpawnTimer" to="." method="_on_fish_spawn_timer_timeout"]
 [connection signal="timeout" from="PowerDrainTimer" to="." method="_on_power_drain_timer_timeout"]
+[connection signal="timeout" from="HealthRegenTimer" to="." method="_on_health_regen_timer_timeout"]

@@ -55,6 +55,6 @@ texture = ExtResource("16_e5oyj")
 texture_offset = Vector2(640, 360)
 invert_enabled = true
 invert_border = 450.0
-polygon = PackedVector2Array(200, -100, -200, -100, -200, 200, 200, 200)
+polygon = PackedVector2Array(250, -100, -250, -100, -250, 225, 250, 225)
 
 [node name="FishPanel" parent="Submarine" instance=ExtResource("3_vgon3")]

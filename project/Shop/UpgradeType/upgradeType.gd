@@ -5,4 +5,3 @@ extends Resource
 @export var maxLevel : int
 @export var fishCost : Array[FishType]
 @export var fishCount : Array[int]
-@export var levelReward : Array[float]
