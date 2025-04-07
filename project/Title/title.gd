@@ -11,7 +11,7 @@ func _on_play_button_pressed() -> void:
 	Currency.fishCollectedCount = {} 
 	Currency.totalDives = 0
 	Currency.upgradeLevels = {}
-
+	AudioController.playClick()
 	get_tree().change_scene_to_file("res://World/World.tscn")
 
 
@@ -19,3 +19,4 @@ func _on_text_edit_text_changed() -> void:
 	if text_edit.text.length() < 70:
 		Currency.submarineName = text_edit.text
 		namePicked = true
+		AudioController.playClick()

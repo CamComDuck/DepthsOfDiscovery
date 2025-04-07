@@ -931,6 +931,7 @@ mouse_filter = 2
 texture = ExtResource("11_vdq4s")
 metadata/_edit_use_anchors_ = true
 
+[connection signal="tab_changed" from="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer" to="." method="_on_purchasing_container_tab_changed"]
 [connection signal="onUpgradePurchased" from="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/Battery/MarginContainer/Battery" to="." method="_on_upgrade_purchased"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/Battery/MarginContainer/Battery/UpgradeButton" to="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/Battery/MarginContainer/Battery" method="_on_upgrade_button_pressed"]
 [connection signal="onUpgradePurchased" from="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer/Power/MarginContainer/PowerContainer/VSpeed/MarginContainer/VSpeed" to="." method="_on_upgrade_purchased"]

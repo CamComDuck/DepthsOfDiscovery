@@ -44,6 +44,7 @@ func updateVisual() -> void:
 
 
 func _on_upgrade_button_pressed() -> void:
+	AudioController.playClick()
 	var fishTypeNeeded : FishType = upgradeType.fishCost[Currency.upgradeLevels[upgradeType]]
 	var fishCountNeeded : int = upgradeType.fishCount[Currency.upgradeLevels[upgradeType]]
 	var currentFishTypeCount : int = Currency.fishCollectedCount[fishTypeNeeded]

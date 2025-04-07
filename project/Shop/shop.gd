@@ -49,6 +49,7 @@ func fixFishPanel() -> void:
 
 
 func _on_dive_button_pressed() -> void:
+	AudioController.playClick()
 	onSceneChanged.emit("res://Ocean/Ocean.tscn")
 
 
@@ -79,3 +80,7 @@ func _on_upgrade_purchased(upgradePurchased: UpgradeType) -> void:
 	elif upgradePurchased == vSpeedUpgrade:
 		submarine.verticalSpeed += 0.2
 		
+
+
+func _on_purchasing_container_tab_changed(_tab: int) -> void:
+	AudioController.playClick()

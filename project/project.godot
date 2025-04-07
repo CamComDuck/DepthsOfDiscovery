@@ -18,6 +18,7 @@ config/icon="res://Submarine/SubmarineSquare.png"
 [autoload]
 
 Currency="*res://World/currency.gd"
+AudioController="*res://audio/audioController.tscn"
 
 [display]
 
@@ -36,7 +37,8 @@ folder_colors={
 "res://Submarine/": "yellow",
 "res://Title/": "orange",
 "res://Win/": "orange",
-"res://World/": "purple"
+"res://World/": "purple",
+"res://audio/": "purple"
 }
 
 [gui]

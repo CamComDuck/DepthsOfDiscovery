@@ -62,6 +62,9 @@ func _ready() -> void:
 	Currency.totalDives += 1
 	if submarine.healthRegen > 0:
 		health_regen_timer.start()
+		
+	await create_tween().tween_interval(.25).finished
+	AudioController.playWater()
 	
 
 func _physics_process(_delta: float) -> void:
@@ -101,6 +104,7 @@ func onHealthHit(minusHealth : float) -> void:
 		healthLevel -= minusHealth
 		healthPowerBars.setHealth(healthLevel)
 		checkDiveEnded(false)
+		AudioController.playHit()
 	
 
 func onFishCollected(fishType : FishType) -> void:
@@ -117,6 +121,7 @@ func onFishCollected(fishType : FishType) -> void:
 		powerLevel -= submarine.powerHit
 		healthPowerBars.setPower(powerLevel)
 		checkDiveEnded(false)
+		AudioController.playCollect()
 
 
 func _on_fish_spawn_timer_timeout() -> void:

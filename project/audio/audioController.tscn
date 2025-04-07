@@ -1,0 +1,41 @@
+[gd_scene load_steps=10 format=3 uid="uid://dml82pfqnftwl"]
+
+[ext_resource type="Script" path="res://audio/audio_controller.gd" id="1_gsku4"]
+[ext_resource type="AudioStream" uid="uid://clk4xheai6a03" path="res://audio/click.wav" id="1_o602m"]
+[ext_resource type="AudioStream" uid="uid://ckpe160rblvxs" path="res://audio/collect.wav" id="2_4op8q"]
+[ext_resource type="AudioStream" uid="uid://152lotyegj6y" path="res://audio/driving.wav" id="3_5w0g7"]
+[ext_resource type="AudioStream" uid="uid://doky2bocnfix3" path="res://audio/hit2.wav" id="4_7dcv3"]
+[ext_resource type="AudioStream" uid="uid://8ca2e07yytfo" path="res://audio/music.ogg" id="5_jm5x4"]
+[ext_resource type="AudioStream" uid="uid://j4xodxftqt8x" path="res://audio/use.wav" id="6_3gf50"]
+[ext_resource type="AudioStream" uid="uid://b05vwb3028kgy" path="res://audio/water.wav" id="7_3x2d7"]
+[ext_resource type="AudioStream" uid="uid://3l3yfridc0b1" path="res://audio/hit.wav" id="9_v4rss"]
+
+[node name="AudioController" type="Node2D"]
+script = ExtResource("1_gsku4")
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_o602m")
+
+[node name="Collect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_4op8q")
+
+[node name="Driving" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_5w0g7")
+
+[node name="Hit2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_7dcv3")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_jm5x4")
+volume_db = -5.0
+autoplay = true
+parameters/looping = true
+
+[node name="Use" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_3gf50")
+
+[node name="Water" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_3x2d7")
+
+[node name="Hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_v4rss")
