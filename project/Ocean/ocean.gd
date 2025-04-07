@@ -1,7 +1,7 @@
 class_name Ocean
 extends Map
 
-const maxDepthY := -9000.0
+const maxDepthY := -10000.0
 
 var submarine : Submarine
 var healthPowerBars : HealthPowerBars
@@ -44,8 +44,7 @@ func _ready() -> void:
 					visiblePolygon = submarine.get_child(j) as Polygon2D
 					visiblePolygon.polygon = submarine.maxVision
 			
-	line_win.points[0].y = maxDepthY
-	line_win.points[1].y = maxDepthY
+	line_win.global_position.y = maxDepthY * -1
 	depthBar.setBestDive((submarine.bestDiveDepth / maxDepthY) * -1)
 	if submarine.bestDiveDepth != 0:
 		line_pb.points[0].y = submarine.bestDiveDepth
