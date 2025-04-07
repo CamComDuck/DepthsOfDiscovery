@@ -17,9 +17,9 @@ bg_color = Color(0.043404, 0.680711, 0.720139, 1)
 
 [node name="HealthPowerBars" type="PanelContainer"]
 offset_left = 425.0
-offset_top = -345.0
+offset_top = -115.0
 offset_right = 605.0
-offset_bottom = -139.0
+offset_bottom = 91.0
 script = ExtResource("1_k6xi8")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

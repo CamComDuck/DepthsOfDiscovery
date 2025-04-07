@@ -8,11 +8,21 @@ var isUp := false
 
 @onready var sprite := %Sprite as Sprite2D
 @onready var swim_timer := %SwimTimer as Timer
+@onready var collision_shape_goldfish: CollisionShape2D = $CollisionShapeGoldfish
+@onready var collision_shape_squid: CollisionPolygon2D = $CollisionShapeSquid
+@onready var collision_shape_anglerfish: CollisionShape2D = $CollisionShapeAnglerfish
+
 
 func _ready() -> void:
 	sprite.texture = fishType.sprite
 	swim_timer.wait_time = randf_range(0.5, 1.5)
 	swim_timer.start()
+	if fishType.name == "Anglerfish":
+		collision_shape_anglerfish.show()
+	elif fishType.name == "Squid":
+		collision_shape_squid.show()
+	elif fishType.name == "Goldfish":
+		collision_shape_goldfish.show()
 
 
 func load_type(newFishType : FishType) -> void:
