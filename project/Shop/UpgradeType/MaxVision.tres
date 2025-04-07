@@ -12,4 +12,3 @@ name = "Max Vision"
 maxLevel = 5
 fishCost = Array[ExtResource("1_m63q5")]([ExtResource("2_wkjv5"), ExtResource("3_viqda"), ExtResource("3_viqda"), ExtResource("4_55dde")])
 fishCount = Array[int]([2, 2, 5, 4])
-levelReward = Array[float]([5.0, 10.0, 15.0, 20.0, 25.0])

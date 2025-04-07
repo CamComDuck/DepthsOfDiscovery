@@ -11,4 +11,3 @@ name = "Vertical Speed"
 maxLevel = 5
 fishCost = Array[ExtResource("1_mqex5")]([ExtResource("2_t44m0"), ExtResource("2_t44m0"), ExtResource("3_kwaw8"), ExtResource("3_kwaw8")])
 fishCount = Array[int]([4, 6, 4, 6])
-levelReward = Array[float]([5.0, 10.0, 15.0, 20.0, 25.0])

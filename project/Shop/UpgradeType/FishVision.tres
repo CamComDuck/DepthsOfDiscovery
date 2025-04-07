@@ -10,4 +10,3 @@ name = "Glowing Fish"
 maxLevel = 0
 fishCost = Array[ExtResource("1_f2dw2")]([ExtResource("2_yual6")])
 fishCount = Array[int]([1, 2, 3, 4])
-levelReward = Array[float]([5.0, 10.0, 15.0, 20.0, 25.0])

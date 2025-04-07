@@ -10,4 +10,3 @@ name = "Glowing Dangers"
 maxLevel = 0
 fishCost = Array[ExtResource("1_oviup")]([ExtResource("2_2fpma")])
 fishCount = Array[int]([1, 2, 3, 4])
-levelReward = Array[float]([5.0, 10.0, 15.0, 20.0, 25.0])

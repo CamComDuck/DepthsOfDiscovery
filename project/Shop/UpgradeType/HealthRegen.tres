@@ -12,4 +12,3 @@ name = "Health Regen"
 maxLevel = 5
 fishCost = Array[ExtResource("1_ooep4")]([ExtResource("2_taljw"), ExtResource("3_qy2ml"), ExtResource("3_qy2ml"), ExtResource("4_sxrws")])
 fishCount = Array[int]([5, 4, 6, 3])
-levelReward = Array[float]([5.0, 10.0, 15.0, 20.0, 25.0])

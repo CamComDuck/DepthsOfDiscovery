@@ -1,10 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://brttdrokf78u5"]
+[gd_scene load_steps=7 format=3 uid="uid://brttdrokf78u5"]
 
 [ext_resource type="Script" path="res://Ocean/healthPowerBars.gd" id="1_k6xi8"]
 [ext_resource type="Theme" uid="uid://cn1usk00ydjpb" path="res://primary_theme.tres" id="1_midej"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_owlhi"]
+bg_color = Color(0, 0, 0, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6nj6u"]
 bg_color = Color(1, 0.203922, 0.235294, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xorr1"]
+bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_837q0"]
 bg_color = Color(0.043404, 0.680711, 0.720139, 1)
@@ -33,6 +39,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("1_midej")
+theme_override_styles/background = SubResource("StyleBoxFlat_owlhi")
 theme_override_styles/fill = SubResource("StyleBoxFlat_6nj6u")
 value = 86.13
 fill_mode = 3
@@ -43,8 +50,9 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("1_midej")
+theme_override_styles/background = SubResource("StyleBoxFlat_xorr1")
 theme_override_styles/fill = SubResource("StyleBoxFlat_837q0")
-value = 100.0
+value = 73.29
 fill_mode = 3
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]

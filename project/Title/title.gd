@@ -2,8 +2,15 @@ class_name Title
 extends Node2D
 
 @onready var text_edit := %TextEdit as TextEdit
+@onready var tutorial: Sprite2D = $Tutorial
+@onready var back_button: Button = $BackButton
+
 
 var namePicked := false
+
+func _ready() -> void:
+	tutorial.hide()
+	back_button.hide()
 
 func _on_play_button_pressed() -> void:
 	if not namePicked:
@@ -20,3 +27,15 @@ func _on_text_edit_text_changed() -> void:
 		Currency.submarineName = text_edit.text
 		namePicked = true
 		AudioController.playClick()
+
+
+func _on_tutorial_button_pressed() -> void:
+	AudioController.playClick()
+	tutorial.show()
+	back_button.show()
+
+
+func _on_back_button_pressed() -> void:
+	AudioController.playClick()
+	tutorial.hide()
+	back_button.hide()
