@@ -19,5 +19,4 @@ func playWater() -> void:
 	$Water.play()
 	
 func _on_music_finished() -> void:
-	print("finished music")
 	$Music.play()
