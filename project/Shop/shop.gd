@@ -57,20 +57,20 @@ func _on_upgrade_purchased(upgradePurchased: UpgradeType) -> void:
 	fishPanel.updateFishCounts()
 	if upgradePurchased == batteryUpgrade:
 		submarine.powerDrain -= 0.5
-		submarine.maxPower += 25
+		submarine.maxPower += 35
 		submarine.powerHit -= 0.5
 	elif upgradePurchased == dangerVisionUpgrade:
 		pass
 	elif upgradePurchased == fishVisionUpgrade:
 		pass
 	elif upgradePurchased == healthRegenUpgrade:
-		submarine.healthRegen += 5
+		submarine.healthRegen += 7.0
 
 	elif upgradePurchased == hSpeedUpgrade:
-		submarine.horizontalSpeed += 0.2
+		submarine.horizontalSpeed += 0.5
 		
 	elif upgradePurchased == maxHealthUpgrade:
-		submarine.maxHealth += 50
+		submarine.maxHealth += 25
 		
 	elif upgradePurchased == maxVisionUpgrade:
 		for i in submarine.maxVision:
@@ -78,9 +78,8 @@ func _on_upgrade_purchased(upgradePurchased: UpgradeType) -> void:
 			i.y += 20
 			
 	elif upgradePurchased == vSpeedUpgrade:
-		submarine.verticalSpeed += 0.2
+		submarine.verticalSpeed += 0.5
 		
-
 
 func _on_purchasing_container_tab_changed(_tab: int) -> void:
 	AudioController.playClick()

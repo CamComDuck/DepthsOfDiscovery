@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://c5dfsjr53w8i3"]
 
 [ext_resource type="Script" path="res://Win/win_game.gd" id="1_fh626"]
-[ext_resource type="Texture2D" uid="uid://7gcbigt1ipnu" path="res://World/background/background.png" id="2_cu06u"]
+[ext_resource type="Texture2D" uid="uid://da3fx78am1se8" path="res://World/background/background_tileAttempt.png" id="2_h41qu"]
 [ext_resource type="Texture2D" uid="uid://cjydm67gt0gvw" path="res://Fish/Anglerfish.png" id="4_q28mu"]
 [ext_resource type="Texture2D" uid="uid://c4xki80awtlme" path="res://Fish/Goldfish.png" id="5_nuv8h"]
 [ext_resource type="Texture2D" uid="uid://clfavvf17jpvr" path="res://Fish/Squid.png" id="6_yj8ab"]
@@ -24,7 +24,7 @@ offset_right = 640.0
 offset_bottom = 360.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_cu06u")
+texture = ExtResource("2_h41qu")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

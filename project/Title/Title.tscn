@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://c0efj8vkuh7ln"]
 
 [ext_resource type="Script" path="res://Title/title.gd" id="1_dilia"]
-[ext_resource type="Texture2D" uid="uid://7gcbigt1ipnu" path="res://World/background/background.png" id="2_qtsyu"]
+[ext_resource type="Texture2D" uid="uid://da3fx78am1se8" path="res://World/background/background_tileAttempt.png" id="2_54vkl"]
 [ext_resource type="Texture2D" uid="uid://dcis8xdp4sbdx" path="res://Submarine/Submarine.png" id="3_j4co2"]
 [ext_resource type="Texture2D" uid="uid://cjydm67gt0gvw" path="res://Fish/Anglerfish.png" id="4_fkqga"]
 [ext_resource type="Texture2D" uid="uid://c4xki80awtlme" path="res://Fish/Goldfish.png" id="5_8746m"]
@@ -26,7 +26,7 @@ offset_right = 640.0
 offset_bottom = 360.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_qtsyu")
+texture = ExtResource("2_54vkl")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -87,6 +87,7 @@ caret_type = 1
 caret_blink = true
 
 [node name="Tutorial" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("7_xigm0")
 
 [node name="BackButton" type="Button" parent="."]

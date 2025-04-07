@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://crspguap2g2d5"]
+[gd_scene load_steps=19 format=3 uid="uid://crspguap2g2d5"]
 
 [ext_resource type="Script" path="res://World/world.gd" id="1_hqvjj"]
 [ext_resource type="Script" path="res://Shop/UpgradeType/upgradeType.gd" id="2_1ej72"]
@@ -17,6 +17,7 @@
 [ext_resource type="Resource" uid="uid://2oeawdd2aygx" path="res://Fish/FishType/Anglerfish.tres" id="12_tt4hm"]
 [ext_resource type="Resource" uid="uid://cajo2b5h5qga0" path="res://Fish/FishType/Squid.tres" id="13_ab4rr"]
 [ext_resource type="Texture2D" uid="uid://7gcbigt1ipnu" path="res://World/background/background.png" id="16_e5oyj"]
+[ext_resource type="Texture2D" uid="uid://da3fx78am1se8" path="res://World/background/background_tileAttempt.png" id="18_wc7xg"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_hqvjj")
@@ -30,26 +31,9 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 position = Vector2(0, 230)
 
-[node name="Background" type="TextureRect" parent="Submarine"]
-unique_name_in_owner = true
-z_index = -100
-z_as_relative = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -640.0
-offset_top = -130.0
-offset_right = 640.0
-offset_bottom = 590.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("16_e5oyj")
-metadata/_edit_use_anchors_ = true
-
 [node name="VisionPolygon" type="Polygon2D" parent="Submarine"]
 unique_name_in_owner = true
+visible = false
 z_index = 6
 z_as_relative = false
 texture = ExtResource("16_e5oyj")
@@ -61,3 +45,16 @@ polygon = PackedVector2Array(250, -100, -250, -100, -250, 225, 250, 225)
 [node name="FishPanel" parent="Submarine" instance=ExtResource("3_vgon3")]
 offset_top = 555.0
 offset_bottom = 620.0
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+follow_viewport_scale = 0.25
+scroll_ignore_camera_zoom = true
+
+[node name="ParallaxLayer1" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.3, 0.3)
+motion_mirroring = Vector2(1536, 864)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer1"]
+texture = ExtResource("18_wc7xg")
+centered = false
+region_rect = Rect2(0, 0, 2560, 1440)

@@ -9,8 +9,8 @@
 [ext_resource type="Resource" uid="uid://b5olwl81eroa5" path="res://Shop/UpgradeType/HealthRegen.tres" id="8_ufgib"]
 [ext_resource type="Resource" uid="uid://bunwi77dxdi7g" path="res://Shop/UpgradeType/MaxVision.tres" id="9_k0hop"]
 [ext_resource type="Resource" uid="uid://cxnvtastfq53d" path="res://Shop/UpgradeType/FishVision.tres" id="10_h4ln6"]
+[ext_resource type="Texture2D" uid="uid://da3fx78am1se8" path="res://World/background/background_tileAttempt.png" id="11_fm55g"]
 [ext_resource type="Resource" uid="uid://45fd2a6d6n05" path="res://Shop/UpgradeType/DangerVision.tres" id="11_u8dxb"]
-[ext_resource type="Texture2D" uid="uid://7gcbigt1ipnu" path="res://World/background/background.png" id="11_vdq4s"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_76dbx"]
 bg_color = Color(0, 0, 0, 0.470588)
@@ -928,7 +928,7 @@ offset_bottom = 360.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("11_vdq4s")
+texture = ExtResource("11_fm55g")
 metadata/_edit_use_anchors_ = true
 
 [connection signal="tab_changed" from="PanelContainer/MarginContainer/HFlowContainer/HBoxContainer/PurchasingContainer" to="." method="_on_purchasing_container_tab_changed"]

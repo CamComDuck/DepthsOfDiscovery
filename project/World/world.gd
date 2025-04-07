@@ -8,7 +8,6 @@ var currentScenePath : String
 var currentScene : Map
 
 @onready var submarine := %Submarine as Submarine
-@onready var background := %Background as TextureRect
 @onready var subCamera := %SubCamera as Camera2D
 @onready var vision_polygon := %VisionPolygon as Polygon2D
 
@@ -33,7 +32,8 @@ func _ready() -> void:
 func onSceneChanged(newScenePath : String) -> void:
 	var fade_out : Tween = create_tween().set_parallel()
 	for child in get_children():
-		fade_out.tween_property(child, "modulate", Color(0, 0, 0), 0.2)
+		if not child is ParallaxBackground:
+			fade_out.tween_property(child, "modulate", Color(0, 0, 0), 0.2)
 	await fade_out.finished
 	
 	if currentScene is Shop:
@@ -48,20 +48,18 @@ func onSceneChanged(newScenePath : String) -> void:
 	
 	var fade_in : Tween = create_tween().set_parallel()
 	for child in get_children():
-		if not child.is_queued_for_deletion():
+		if not child.is_queued_for_deletion() and not child is ParallaxBackground:
 			fade_in.tween_property(child, "modulate", Color(1, 1, 1), 0.2)
 	
 	if currentScene is Ocean:
 		submarine.global_position = Vector2(0,0)
-		background.show()
 		submarine.allowMovement = true
 		submarine.toggleShipScanner(true)
 		subCamera.enabled = true
-		vision_polygon.show()
+		#vision_polygon.show()
 		
 	elif currentScene is Shop:
 		submarine.global_position = currentScene.getReferenceCenter()
-		background.hide()
 		submarine.allowMovement = false
 		submarine.toggleShipScanner(false)
 		subCamera.enabled = false
@@ -69,7 +67,6 @@ func onSceneChanged(newScenePath : String) -> void:
 		
 	elif currentScene is WinGame:
 		submarine.global_position = Vector2(-441,222)
-		background.hide()
 		submarine.toggleShipScanner(false)
 		vision_polygon.hide()
 		subCamera.enabled = false
