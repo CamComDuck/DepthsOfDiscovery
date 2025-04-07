@@ -1,7 +1,7 @@
 class_name Ocean
 extends Map
 
-const maxDepthY := -10000.0
+const maxDepthY := -12500.0
 
 var submarine : Submarine
 var healthPowerBars : HealthPowerBars

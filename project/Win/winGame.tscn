@@ -62,4 +62,27 @@ flip_h = true
 position = Vector2(340, 205)
 texture = ExtResource("6_yj8ab")
 
+[node name="SubmarineNameContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(900, 0)
+offset_left = -450.0
+offset_top = 350.0
+offset_right = 450.0
+offset_bottom = 395.0
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="SubmarineNameContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="SubmarineNameLabel" type="Label" parent="SubmarineNameContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "My Submarine -- 10 Dives"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]

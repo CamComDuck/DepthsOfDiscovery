@@ -10,5 +10,5 @@
 script = ExtResource("3_7svh4")
 name = "Health Regen"
 maxLevel = 5
-fishCost = Array[ExtResource("1_ooep4")]([ExtResource("2_taljw"), ExtResource("3_qy2ml"), ExtResource("3_qy2ml"), ExtResource("4_sxrws")])
-fishCount = Array[int]([5, 4, 6, 3])
+fishCost = Array[ExtResource("1_ooep4")]([ExtResource("2_taljw"), ExtResource("2_taljw"), ExtResource("3_qy2ml"), ExtResource("4_sxrws")])
+fishCount = Array[int]([4, 6, 5, 3])

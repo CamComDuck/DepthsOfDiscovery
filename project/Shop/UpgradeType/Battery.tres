@@ -1,13 +1,14 @@
-[gd_resource type="Resource" script_class="UpgradeType" load_steps=5 format=3 uid="uid://w7btxuhlww3j"]
+[gd_resource type="Resource" script_class="UpgradeType" load_steps=6 format=3 uid="uid://w7btxuhlww3j"]
 
 [ext_resource type="Script" path="res://Fish/FishType/FishType.gd" id="1_we4ei"]
 [ext_resource type="Resource" uid="uid://b8k4roh8u3k3t" path="res://Fish/FishType/Goldfish.tres" id="2_nfwc3"]
 [ext_resource type="Script" path="res://Shop/UpgradeType/upgradeType.gd" id="2_qc6wk"]
 [ext_resource type="Resource" uid="uid://cajo2b5h5qga0" path="res://Fish/FishType/Squid.tres" id="3_wesqh"]
+[ext_resource type="Resource" uid="uid://2oeawdd2aygx" path="res://Fish/FishType/Anglerfish.tres" id="4_kjkr4"]
 
 [resource]
 script = ExtResource("2_qc6wk")
 name = "Battery"
-maxLevel = 5
-fishCost = Array[ExtResource("1_we4ei")]([ExtResource("2_nfwc3"), ExtResource("2_nfwc3"), ExtResource("3_wesqh"), ExtResource("3_wesqh")])
-fishCount = Array[int]([4, 6, 3, 6])
+maxLevel = 6
+fishCost = Array[ExtResource("1_we4ei")]([ExtResource("2_nfwc3"), ExtResource("2_nfwc3"), ExtResource("3_wesqh"), ExtResource("4_kjkr4"), ExtResource("4_kjkr4")])
+fishCount = Array[int]([3, 6, 4, 4, 6])
