@@ -143,15 +143,11 @@ func _on_fish_spawn_timer_timeout() -> void:
 		
 		newFish.load_type(newFishType)
 		
-		var randX1 := randf_range(submarine.global_position.x - 600, submarine.global_position.x - 350)
-		var randX2 := randf_range(submarine.global_position.x + 600, submarine.global_position.x + 350)
-		var randX := randi_range(0, 1)
-		var randY := randf_range(submarine.global_position.y + 400, submarine.global_position.y + 800)
+		var randX := randf_range(submarine.global_position.x - 700, submarine.global_position.x + 700)
+		var randY := randf_range(submarine.global_position.y + 500, submarine.global_position.y + 900)
 		
-		if randX == 0:
-			newFish.global_position = Vector2(randX1, randY)
-		else:
-			newFish.global_position = Vector2(randX2, randY)
+		randY = minf(randY, (maxDepthY - 100) * -1)
+		newFish.global_position = Vector2(randX, randY)
 
 		add_child(newFish)
 	
