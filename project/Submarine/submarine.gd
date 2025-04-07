@@ -20,11 +20,7 @@ var powerHit := 5.0
 var healthHit := 25.0
 var horizontalSpeed := 1.0
 var verticalSpeed := 1.0
-var maxVision : Array[Vector2] = [
-	Vector2(250, -100),
-	Vector2(-250, -100),
-	Vector2(-250, 225),
-	Vector2(250, 225)]
+var maxVisionScale := Vector2(1.0, 1.0)
 
 @onready var scannerCast := %ScannerCast as ShapeCast2D
 @onready var shipCast := %ShipCast as ShapeCast2D

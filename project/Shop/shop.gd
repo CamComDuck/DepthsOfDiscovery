@@ -28,9 +28,9 @@ func _ready() -> void:
 	for i in get_parent().get_child_count():
 		if get_parent().get_child(i) is Submarine:
 			submarine = get_parent().get_child(i) as Submarine
-			for j in submarine.get_child_count():
-				if submarine.get_child(j) is FishPanel:
-					fishPanel = submarine.get_child(j) as FishPanel
+			for child in submarine.get_children():
+				if child is FishPanel:
+					fishPanel = child as FishPanel
 					fishPanelPosition = fishPanel.position
 					fishPanelSize = fishPanel.size
 					fishPanel.reparent(fish_panel_parent)
@@ -73,9 +73,8 @@ func _on_upgrade_purchased(upgradePurchased: UpgradeType) -> void:
 		submarine.maxHealth += 25
 		
 	elif upgradePurchased == maxVisionUpgrade:
-		for i in submarine.maxVision:
-			i.x += 20
-			i.y += 20
+		submarine.maxVisionScale.x += 0.25
+		submarine.maxVisionScale.y += 0.1
 			
 	elif upgradePurchased == vSpeedUpgrade:
 		submarine.verticalSpeed += 0.5

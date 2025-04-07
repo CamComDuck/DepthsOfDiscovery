@@ -8,9 +8,10 @@ var isUp := false
 
 @onready var sprite := %Sprite as Sprite2D
 @onready var swim_timer := %SwimTimer as Timer
-@onready var collision_shape_goldfish: CollisionShape2D = $CollisionShapeGoldfish
+@onready var collision_shape_goldfish: CollisionPolygon2D = $CollisionShapeGoldfish
 @onready var collision_shape_squid: CollisionPolygon2D = $CollisionShapeSquid
-@onready var collision_shape_anglerfish: CollisionShape2D = $CollisionShapeAnglerfish
+@onready var collision_shape_anglerfish: CollisionPolygon2D = $CollisionShapeAnglerfish
+
 
 
 func _ready() -> void:

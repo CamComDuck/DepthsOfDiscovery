@@ -9,7 +9,8 @@ var currentScene : Map
 
 @onready var submarine := %Submarine as Submarine
 @onready var subCamera := %SubCamera as Camera2D
-@onready var vision_polygon := %VisionPolygon as Polygon2D
+@onready var point_light: PointLight2D = $Submarine/PointLight
+
 
 func _ready() -> void:
 	if Currency.fishCollectedCount.is_empty():
@@ -32,8 +33,11 @@ func _ready() -> void:
 func onSceneChanged(newScenePath : String) -> void:
 	var fade_out : Tween = create_tween().set_parallel()
 	for child in get_children():
-		if not child is ParallaxBackground:
+		if child is ParallaxBackground:
+			fade_out.tween_property(child.get_child(0).get_child(0), "modulate", Color(0, 0, 0), 0.2)
+		else:
 			fade_out.tween_property(child, "modulate", Color(0, 0, 0), 0.2)
+		
 	await fade_out.finished
 	
 	if currentScene is Shop:
@@ -48,28 +52,32 @@ func onSceneChanged(newScenePath : String) -> void:
 	
 	var fade_in : Tween = create_tween().set_parallel()
 	for child in get_children():
-		if not child.is_queued_for_deletion() and not child is ParallaxBackground:
-			fade_in.tween_property(child, "modulate", Color(1, 1, 1), 0.2)
+		if not child.is_queued_for_deletion():
+			if child is ParallaxBackground:
+				fade_in.tween_property(child.get_child(0).get_child(0), "modulate", Color(1, 1, 1), 0.2)
+			else:
+				fade_in.tween_property(child, "modulate", Color(1, 1, 1), 0.2)
+			
 	
 	if currentScene is Ocean:
 		submarine.global_position = Vector2(0,0)
 		submarine.allowMovement = true
 		submarine.toggleShipScanner(true)
 		subCamera.enabled = true
-		#vision_polygon.show()
+		point_light.show()
 		
 	elif currentScene is Shop:
 		submarine.global_position = currentScene.getReferenceCenter()
 		submarine.allowMovement = false
 		submarine.toggleShipScanner(false)
 		subCamera.enabled = false
-		vision_polygon.hide()
+		point_light.hide()
 		
 	elif currentScene is WinGame:
 		submarine.global_position = Vector2(-441,222)
 		submarine.toggleShipScanner(false)
-		vision_polygon.hide()
 		subCamera.enabled = false
+		point_light.hide()
 	
 	await fade_in.finished
 	currentScenePath = newScenePath

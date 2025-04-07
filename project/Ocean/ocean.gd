@@ -7,7 +7,7 @@ var submarine : Submarine
 var healthPowerBars : HealthPowerBars
 var depthBar : DepthBar
 var fishPanel : FishPanel
-var visiblePolygon : Polygon2D
+var pointLight : PointLight2D
 
 var powerLevel : float
 var healthLevel : float
@@ -40,9 +40,9 @@ func _ready() -> void:
 					fishPanel = submarine.get_child(j) as FishPanel
 					if fishPanel.isPanelEmpty():
 						fishPanel.hide()
-				elif submarine.get_child(j) is Polygon2D:
-					visiblePolygon = submarine.get_child(j) as Polygon2D
-					visiblePolygon.polygon = submarine.maxVision
+				elif submarine.get_child(j) is PointLight2D:
+					pointLight = submarine.get_child(j) as PointLight2D
+					pointLight.scale = submarine.maxVisionScale
 			
 	line_win.global_position.y = maxDepthY * -1
 	depthBar.setBestDive((submarine.bestDiveDepth / maxDepthY) * -1)
